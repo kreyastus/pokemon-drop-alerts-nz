@@ -6,6 +6,8 @@
 # this one (DISCORD_WEBHOOK=...), never in this file.
 
 settings:
+  source: cpanel               # names this scanner on the website, so two scanners never overwrite each other
+  release_dates: true          # read release dates from pre-order pages (each checked at most once a day)
   price_drop_percent: 5
   cooldown_minutes: 60
   min_delay_seconds: 2
