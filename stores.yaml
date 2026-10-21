@@ -87,9 +87,8 @@ stores:
     name: Toyworld
     url: https://www.toyworld.co.nz
     adapter: shopify
-    collections:               # their whole shop is 10,000+ items, so only read these two
-      - trading-cards
-      - pokemon
+    collections:               # their whole shop is 10,000+ items; Pokémon cards are filed here
+      - trading-cards           # (their "pokemon" collection is mostly toys and watches)
 
   # ------------------------------------------------------------ Squarespace
   - id: collectallday
