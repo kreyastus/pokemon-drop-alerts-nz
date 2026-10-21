@@ -28,6 +28,11 @@ discord:
   events: [preorder, new, restock, price_drop]
   username: PokéDrop NZ
 
+
+wordpress:
+  url: ${WP_URL}               # https://drops.elementaldigital.co.nz
+  secret: ${WP_SECRET}         # Settings > PokéDrop Feed in WordPress; keep it in .env, never in this file
+
 stores:
   # Each tile says whether it can be ordered online; "Find in-store" items
   # count as sold out. robots.txt blocks site search, so the category page
