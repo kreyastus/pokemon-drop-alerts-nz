@@ -198,37 +198,71 @@ def _describe(html: str) -> str:
 
 
 # ---------------------------------------------------------------- fetching
-def _render(url: str, wait_selector: str | None, user_agent: str) -> str:
-    from playwright.sync_api import sync_playwright  # optional dependency
+class _Renderer:
+    """One headless Chromium shared by every page of a store, so opening a
+    listing plus a dozen product pages stays quick."""
 
-    with sync_playwright() as pw:
-        browser = pw.chromium.launch()
-        page = browser.new_page(user_agent=user_agent, locale="en-NZ")
+    def __init__(self, user_agent: str):
+        self.user_agent = user_agent
+
+    def __enter__(self):
+        from playwright.sync_api import sync_playwright  # optional dependency
+
+        self._pw = sync_playwright().start()
+        self._browser = self._pw.chromium.launch()
+        self._page = self._browser.new_page(user_agent=self.user_agent, locale="en-NZ")
+        return self
+
+    def __exit__(self, *exc):
+        self._browser.close()
+        self._pw.stop()
+
+    def get(self, url: str, wait_selector: str | None = None, scroll: bool = True) -> str:
+        page = self._page
         page.goto(url, wait_until="domcontentloaded", timeout=45000)
         if wait_selector:
-            page.wait_for_selector(wait_selector, timeout=20000)
+            page.wait_for_selector(wait_selector, state="attached", timeout=20000)
         else:
             page.wait_for_load_state("networkidle", timeout=20000)
-        # Scroll down in steps so lazily loaded product cards appear.
-        for _ in range(6):
-            page.mouse.wheel(0, 2500)
-            page.wait_for_timeout(600)
-        page.wait_for_timeout(1500)
-        html = page.content()
-        browser.close()
-        return html
+        if scroll:
+            # Scroll down in steps so lazily loaded product cards appear.
+            for _ in range(6):
+                page.mouse.wheel(0, 2500)
+                page.wait_for_timeout(600)
+            page.wait_for_timeout(1500)
+        return page.content()
+
+
+class _RenderedClient:
+    """Looks like PoliteClient.get_text, but loads pages in the headless browser."""
+
+    def __init__(self, renderer: _Renderer, client: PoliteClient):
+        self.renderer = renderer
+        self.client = client
+
+    def get_text(self, url: str) -> str:
+        if not self.client.allowed(url):
+            raise RuntimeError(f"robots.txt disallows {url}")
+        return self.renderer.get(url, 'script[type="application/ld+json"]', scroll=False)
 
 
 def fetch(store: dict, client: PoliteClient) -> list[Product]:
+    if store.get("render"):
+        with _Renderer(client.user_agent) as renderer:
+            return _fetch(store, client, renderer)
+    return _fetch(store, client, None)
+
+
+def _fetch(store: dict, client: PoliteClient, renderer: _Renderer | None) -> list[Product]:
     base = store["url"].rstrip("/")
     seen: dict[str, Product] = {}
     for path in store.get("pages", []):
         url = path if path.startswith("http") else f"{base}/{path.lstrip('/')}"
-        if store.get("render"):
+        if renderer:
             if not client.allowed(url):
                 log.warning("%s: robots.txt disallows %s, skipping", store["id"], url)
                 continue
-            html = _render(url, (store.get("selectors") or {}).get("item"), client.user_agent)
+            html = renderer.get(url, (store.get("selectors") or {}).get("item"))
         else:
             html = client.get_text(url)
         found = parse_jsonld(store, html, url)
@@ -240,6 +274,7 @@ def fetch(store: dict, client: PoliteClient) -> list[Product]:
             seen[p.key] = p
     products = list(seen.values())
     if store.get("detail_pages"):
-        products = check_details(store, client, products)
+        detail_client = _RenderedClient(renderer, client) if renderer else client
+        products = check_details(store, detail_client, products)
     log.info("%s: %d products parsed from HTML", store["id"], len(products))
     return products
