@@ -51,3 +51,14 @@ stores:
       price: "[data-test-id=price]"
       image: img.tile-image
       in_stock: '.availability-stock-status[data-orderable="true"]'
+
+  # Whitcoulls turns away GitHub's servers but lets this host in. It has no
+  # Pokémon cards online yet, so the first ones it lists are alerted
+  # (alert_from_start). In-store-only stock counts as available.
+  - id: whitcoulls
+    name: Whitcoulls
+    url: https://www.whitcoulls.co.nz
+    adapter: whitcoulls
+    alert_from_start: true
+    missing_means_sold_out: true
+    pages: [/games-puzzles/games/collectible-cards]
