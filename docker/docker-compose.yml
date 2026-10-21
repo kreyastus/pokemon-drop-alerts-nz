@@ -1,0 +1,11 @@
+# PokéDrop NZ home scanner. Copy .env.example to .env, fill it in, then:
+#   docker compose up -d --build
+services:
+  pokedrop:
+    build: .
+    container_name: pokedrop-home
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./data:/app/data   # scan state, so restarts don't re-alert
+      - ./src:/app/src     # the scanner code, kept up to date from GitHub
