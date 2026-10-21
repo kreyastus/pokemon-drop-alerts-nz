@@ -278,7 +278,7 @@ stores:
     name: Farmers
     url: https://www.farmers.co.nz
     adapter: html
-    enabled: false             # turns away GitHub and cPanel; scanned from home instead (stores-home.yaml)
+    enabled: false             # turns away GitHub, cPanel and a home connection
     render: true
     missing_means_sold_out: false
     pages: [/toys/games-cards-puzzles/trading-cards]
@@ -327,7 +327,7 @@ stores:
     name: Kmart NZ
     url: https://www.kmart.co.nz
     adapter: kmart
-    enabled: false             # turns away GitHub and cPanel; scanned from home instead (stores-home.yaml)
+    enabled: false             # turns away GitHub, cPanel and a home connection
     missing_means_sold_out: false
     pages: [/category/toys/pokemon-trading-cards/]
 
