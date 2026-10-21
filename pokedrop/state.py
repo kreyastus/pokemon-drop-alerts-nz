@@ -47,6 +47,9 @@ class State:
         stale = [k for k, v in prods.items() if (_parse(v.get("last_seen")) or cutoff) < cutoff]
         for k in stale:
             del prods[k]
+        releases = self.data.get("releases", {})
+        for k in [k for k in releases if k not in prods]:
+            del releases[k]
         if stale:
             log.info("Pruned %d products not seen for %d days", len(stale), days)
 
