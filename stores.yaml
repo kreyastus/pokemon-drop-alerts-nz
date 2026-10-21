@@ -83,6 +83,20 @@ stores:
       - pokemon-tcg-decks
       - japanese-pokemon-tcg
 
+  # A Christchurch shop: its website sells from the shop's own shelves, so
+  # website stock is shown as shop stock on the Canterbury page (location).
+  - id: cardmerchantchch
+    name: Card Merchant Christchurch
+    url: https://cardmerchantchristchurch.co.nz
+    adapter: shopify
+    collections: [pokemon-sealed]
+    filter:
+      drop: [ticket, tickets, entry, registration]   # event tickets share the sealed collection
+    location:
+      name: Card Merchant Christchurch
+      address: 7/300 Lincoln Road, Addington, Christchurch 8024
+      region: Canterbury
+
   - id: toyworld
     name: Toyworld
     url: https://www.toyworld.co.nz
