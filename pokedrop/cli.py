@@ -16,6 +16,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 from . import config as config_mod
 from .adapters import ADAPTERS
+from . import release
 from .detect import detect
 from .filters import ProductFilter, RRPTable, clean_title, purchase_limit
 from .http import PoliteClient
@@ -84,6 +85,7 @@ def run_scan(cfg: dict, state_path: str, dry_run: bool = False) -> list[Event]:
     all_events: list[Event] = []
     health: list[str] = []
     status_rows = []
+    upcoming: list[dict] = []   # every pre-order we can see, for the release calendar
 
     # Different shops run in parallel; requests to the same shop stay sequential.
     with ThreadPoolExecutor(max_workers=int(settings.get("parallel_stores", 6))) as pool:
@@ -100,6 +102,20 @@ def run_scan(cfg: dict, state_path: str, dry_run: bool = False) -> list[Event]:
                 health.append(f"⚠️ **{store.get('name', sid)}** has failed {st['failures']} scans in a row: `{error[:150]}`")
             status_rows.append({"store_id": sid, "store_name": store.get("name", sid), "ok": False, "checked_at": now_iso()})
             continue
+        if store.get("release_dates", settings.get("release_dates", True)):
+            try:
+                release.enrich(store, products, state.data.setdefault("releases", {}), _client(settings))
+            except Exception as exc:  # noqa: BLE001 - never let the calendar stop alerts
+                log.warning("%s: release dates skipped (%s)", sid, exc)
+        upcoming.extend(
+            {
+                "store_id": sid, "store_name": store.get("name", sid), "title": p.title, "url": p.url,
+                "price": p.price, "available": p.available, "image": p.image, "limit": p.limit, "rrp": p.rrp,
+                "release_date": p.release_date, "release_precision": p.release_precision,
+                "line": release.product_line(p.title),
+            }
+            for p in products if p.preorder
+        )
         if st.get("failures", 0) >= int(settings.get("alert_after_failures", 6)):
             health.append(f"✅ **{store.get('name', sid)}** is scanning again.")
         st["failures"] = 0
@@ -131,13 +147,13 @@ def run_scan(cfg: dict, state_path: str, dry_run: bool = False) -> list[Event]:
             extra += f" RRP {e.product.rrp}" if e.product.rrp else ""
             print(f"[{e.type}] {e.store_name}: {e.product.title} ({e.product.price}){extra} {e.product.url}")
     else:
-        _deliver(cfg, all_events, health, status_rows)
+        _deliver(cfg, all_events, health, status_rows, upcoming)
     state.prune(int(settings.get("forget_after_days", 45)))
     state.save()
     return all_events
 
 
-def _deliver(cfg, events, health, status_rows):
+def _deliver(cfg, events, health, status_rows, upcoming=None):
     dcfg = cfg.get("discord") or {}
     if dcfg.get("webhook") or dcfg.get("webhooks"):
         if events:
@@ -153,7 +169,7 @@ def _deliver(cfg, events, health, status_rows):
             if events:
                 wp.send(events)
             if wcfg.get("send_status", True):
-                wp.send_status(status_rows)
+                wp.send_status(status_rows, upcoming or [], cfg["settings"].get("source", "default"))
         except Exception as exc:  # noqa: BLE001
             log.error("WordPress delivery failed: %s", exc)
 
