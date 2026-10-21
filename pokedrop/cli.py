@@ -17,7 +17,7 @@ from concurrent.futures import ThreadPoolExecutor
 from . import config as config_mod
 from .adapters import ADAPTERS
 from .detect import detect
-from .filters import ProductFilter
+from .filters import ProductFilter, RRPTable, clean_title, purchase_limit
 from .http import PoliteClient
 from .models import Event, Product, PREORDER
 from .notify import DiscordNotifier, WordPressNotifier
@@ -58,11 +58,27 @@ def fetch_store(store: dict, settings: dict) -> tuple[dict, list[Product] | None
         return store, None, f"{type(exc).__name__}: {exc}"
     pf = _filter_for(store, settings)
     assume = bool(store.get("pokemon_only"))  # whole collection is Pokémon already
-    return store, [p for p in products if pf.matches(p, assume_pokemon=assume)], None
+    kept = [p for p in products if pf.matches(p, assume_pokemon=assume)]
+    rrp = settings.get("_rrp_table")
+    for p in kept:
+        p.limit = purchase_limit(p.title, *p.tags)
+        if p.limit:
+            p.title = clean_title(p.title)
+        if rrp:
+            p.rrp = rrp.lookup(p.title)
+    return store, kept, None
+
+
+def _prepare(cfg: dict) -> dict:
+    """Builds the RRP table once per run and keeps it with the settings."""
+    rrp = cfg.get("rrp") or {}
+    cfg["settings"]["_rrp_table"] = RRPTable(rrp.get("rules"), rrp.get("exclude"))
+    cfg["settings"]["_rrp_flag_percent"] = float(rrp.get("flag_over_percent", 15))
+    return cfg
 
 
 def run_scan(cfg: dict, state_path: str, dry_run: bool = False) -> list[Event]:
-    settings = cfg["settings"]
+    settings = _prepare(cfg)["settings"]
     stores = [s for s in cfg["stores"] if s.get("enabled", True)]
     state = State(state_path)
     all_events: list[Event] = []
@@ -111,7 +127,9 @@ def run_scan(cfg: dict, state_path: str, dry_run: bool = False) -> list[Event]:
 
     if dry_run:
         for e in all_events:
-            print(f"[{e.type}] {e.store_name}: {e.product.title} ({e.product.price}) {e.product.url}")
+            extra = f" limit {e.product.limit}" if e.product.limit else ""
+            extra += f" RRP {e.product.rrp}" if e.product.rrp else ""
+            print(f"[{e.type}] {e.store_name}: {e.product.title} ({e.product.price}){extra} {e.product.url}")
     else:
         _deliver(cfg, all_events, health, status_rows)
     state.prune(int(settings.get("forget_after_days", 45)))
@@ -123,7 +141,7 @@ def _deliver(cfg, events, health, status_rows):
     dcfg = cfg.get("discord") or {}
     if dcfg.get("webhook") or dcfg.get("webhooks"):
         if events:
-            DiscordNotifier(dcfg).send(events)
+            DiscordNotifier({**dcfg, "rrp_flag_percent": cfg["settings"].get("_rrp_flag_percent", 15)}).send(events)
         hook = dcfg.get("health_webhook")
         if hook and health:
             import requests
@@ -166,6 +184,7 @@ def cmd_detect(args):
 
 def cmd_list(args):
     cfg = config_mod.load(args.config)
+    _prepare(cfg)
     store = next((s for s in cfg["stores"] if s["id"] == args.store), None)
     if not store:
         sys.exit(f"No store with id '{args.store}' in {args.config}")
@@ -175,7 +194,8 @@ def cmd_list(args):
     for p in sorted(products, key=lambda p: (not p.available, p.title)):
         flag = "PRE " if p.preorder else ("IN  " if p.available else "OUT ")
         price = f"${p.price:,.2f}" if p.price is not None else "   ?"
-        print(f"{flag} {price:>10}  {p.title[:70]}")
+        badges = (f"  [limit {p.limit}]" if p.limit else "") + (f"  [RRP ${p.rrp:,.2f}]" if p.rrp else "")
+        print(f"{flag} {price:>10}  {p.title[:70]}{badges}")
     print(f"\n{len(products)} Pokémon products, {sum(p.available for p in products)} available")
 
 
@@ -185,6 +205,8 @@ def cmd_test_discord(args):
         store_id="test", product_id="1", title="Test alert: Pokémon TCG Elite Trainer Box",
         url="https://example.com", price=89.99, available=True, preorder=True,
     )
+    sample.limit = 2
+    sample.rrp = 89.99
     DiscordNotifier(cfg.get("discord") or {}).send([Event(PREORDER, sample, "PokéDrop test", None, now_iso())])
     print("Sent. Check your Discord channel.")
 
