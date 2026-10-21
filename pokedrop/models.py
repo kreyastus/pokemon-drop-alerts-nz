@@ -21,6 +21,8 @@ class Product:
     tags: list[str] = field(default_factory=list)
     limit: Optional[int] = None       # purchase limit per customer, if the retailer states one
     rrp: Optional[float] = None       # recommended retail price, from rrp.yaml
+    release_date: Optional[str] = None       # "2026-12-11", or "2026-11" when only the month is known
+    release_precision: Optional[str] = None  # "day" or "month"
 
     @property
     def key(self) -> str:
