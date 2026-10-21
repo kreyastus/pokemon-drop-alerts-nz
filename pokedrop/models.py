@@ -23,6 +23,7 @@ class Product:
     rrp: Optional[float] = None       # recommended retail price, from rrp.yaml
     release_date: Optional[str] = None       # "2026-12-11", or "2026-11" when only the month is known
     release_precision: Optional[str] = None  # "day" or "month"
+    branches: Optional[list] = None   # stock at physical shops: [{id, name, region, address, units, in_stock, message, basis}]
 
     @property
     def key(self) -> str:
