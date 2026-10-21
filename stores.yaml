@@ -150,11 +150,14 @@ stores:
   # The Warehouse lists Pokémon cards on one category page. Each tile says
   # whether it can be ordered online; "Find in-store" items count as sold out.
   # Its robots.txt blocks site search, so the category page is used instead.
+  # The Warehouse blocks requests from cloud servers such as GitHub's, so it's
+  # off here. It works from a home connection: switch it on if you run the
+  # scanner on a Raspberry Pi or your own computer.
   - id: warehouse
     name: The Warehouse
     url: https://www.thewarehouse.co.nz
     adapter: html
-    render: true
+    enabled: false
     pokemon_only: true
     missing_means_sold_out: false
     pages: [/c/official-merchandise/pok%C3%A9mon/pokemon-trading-cards]
