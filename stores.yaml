@@ -97,6 +97,136 @@ stores:
       address: 7/300 Lincoln Road, Addington, Christchurch 8024
       region: Canterbury
 
+  # ------------------------------------------------ NZ hobby shops (Shopify)
+  # Found through DropNZ's shop list and checked one by one: each watches the
+  # shop's sealed Pokémon collections only (no singles). A new shop's first
+  # scan just records what it has, so adding these sends no alerts until
+  # something actually changes.
+
+  - id: aniverse
+    name: Aniverse
+    url: https://aniverse.co.nz
+    adapter: shopify
+    collections: [pokemon]
+
+  - id: boostergames
+    name: Booster Games
+    url: https://www.boostergames.co.nz
+    adapter: shopify
+    pokemon_only: true         # titles often leave out the word Pokémon
+    collections: [pokemon-tcg]
+
+  - id: cardbot
+    name: Cardbot
+    url: https://cardbot.co.nz
+    adapter: shopify
+    collections: [pokemon]
+
+  - id: cardmasters
+    name: Card Masters
+    url: https://cardmasters.co.nz
+    adapter: shopify
+    collections: [pokemon]
+
+  - id: cardmerchanthamilton
+    name: Card Merchant Hamilton
+    url: https://cardmerchanthamilton.co.nz
+    adapter: shopify
+    collections: [pokemon-sealed]
+    filter:
+      drop: [ticket, tickets, entry, registration]   # event tickets share the collection
+
+  - id: cardmerchanttauranga
+    name: Card Merchant Tauranga
+    url: https://cardmerchanttauranga.co.nz
+    adapter: shopify
+    collections: [pokemon-sealed]
+    filter:
+      drop: [ticket, tickets, entry, registration]   # event tickets share the collection
+
+  - id: cardmerchantwellington
+    name: Card Merchant Wellington
+    url: https://cardmerchantwellington.co.nz
+    adapter: shopify
+    collections: [pokemon]
+    filter:
+      drop: [ticket, tickets, entry, registration]   # event tickets share the collection
+
+  - id: cardtopia
+    name: Cardtopia
+    url: https://www.cardtopia.co.nz
+    adapter: shopify
+    preorder_collections: [pokemon-english-pre-orders]
+    collections: [pokemon-english-pre-orders, pokemon-collection-box, booster-packs-and-boxes, pokemon-japanese-booster-box-packs, pokemon-japanese-special-box]
+
+  - id: gamecorner
+    name: Game Corner
+    url: https://gamecorner.co.nz
+    adapter: shopify
+    collections: [pokemon]
+
+  - id: kidzstuff
+    name: Kidz Stuff Online
+    url: https://kidzstuffonline.co.nz
+    adapter: shopify
+    collections: [pokemon-products]
+
+  - id: kollectaka
+    name: Kollectaka
+    url: https://kollectaka.co.nz
+    adapter: shopify
+    collections: [chinese-tcg, japanese-tcg]
+
+  - id: metalife
+    name: MetaLife
+    url: https://www.metalife.co.nz
+    adapter: shopify
+    collections: [pokemon]
+
+  - id: mrtofu
+    name: Mr Tofu
+    url: https://mrtofu.store
+    adapter: shopify
+    collections: [pokemon-tcg, pokemon-tcg-japanese]
+
+  - id: parkocards
+    name: Parko Cards
+    url: https://parkocards.co.nz
+    adapter: shopify
+    collections: [pokemon-booster-boxes-and-packs]
+
+  - id: playx
+    name: PlayX
+    url: https://www.playx.co.nz
+    adapter: shopify
+    collections: [pokemon, pokemon-2]
+    filter:
+      drop: [model kit]   # Pokémon model kits share the collection
+
+  - id: prospernz
+    name: Prosper NZ
+    url: https://prospernz.com
+    adapter: shopify
+    collections: [pokemon-new]
+
+  - id: razorleaf
+    name: Razorleaf
+    url: https://www.razorleaf.co.nz
+    adapter: shopify
+    collections: [pokemon]
+
+  - id: shuffleandcut
+    name: Shuffle & Cut Games
+    url: https://www.shuffleandcutgames.co.nz
+    adapter: shopify
+    collections: [pokemon-sealed]
+
+  - id: toytime
+    name: Toy Time
+    url: https://www.toytime.co.nz
+    adapter: shopify
+    collections: [pokemon-tcg, pokemon-chinese, pokemon-japanese]
+
   - id: toyworld
     name: Toyworld
     url: https://www.toyworld.co.nz
