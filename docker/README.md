@@ -10,9 +10,12 @@ seconds between pages. Farmers is checked every 20 minutes and Kmart every 30.
 
 ## Set up
 
-1. Copy this `docker` folder to your Docker server.
-2. Copy `.env.example` to `.env` and fill in the same values the cPanel
-   server uses (Discord webhook, WordPress address and secret).
+1. On your Docker server, get this folder:
+   `git clone https://github.com/kreyastus/pokemon-drop-alerts-nz.git`
+   then `cd pokemon-drop-alerts-nz/docker`.
+2. Copy `.env.example` to `.env` (`cp .env.example .env`) and fill in the
+   same values the cPanel server uses (Discord webhook, WordPress address and
+   secret).
 3. Run `docker compose up -d --build`.
 4. Check it's working: `docker logs -f pokedrop-home`. Within a few minutes
    you should see lines like `farmers: 13 products parsed from HTML` and
