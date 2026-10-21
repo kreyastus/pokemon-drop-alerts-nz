@@ -226,6 +226,12 @@ stores:
     url: https://www.toytime.co.nz
     adapter: shopify
     collections: [pokemon-tcg, pokemon-chinese, pokemon-japanese]
+    # Christchurch shop, so it shows on the Canterbury page. Its online stock may
+    # include its Lincoln warehouse, so the page labels it as website stock.
+    location:
+      name: Toy Time
+      address: Shop 9, The Colombo, 363 Colombo Street, Sydenham, Christchurch
+      region: Canterbury
 
   - id: toyworld
     name: Toyworld
