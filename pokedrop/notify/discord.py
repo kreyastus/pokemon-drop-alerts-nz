@@ -27,12 +27,29 @@ def _money(v):
     return f"NZ${v:,.2f}" if v is not None else "Price not listed"
 
 
-def build_embed(e: Event) -> dict:
+def rrp_note(price, rrp, flag_percent: float = 15):
+    """'NZ$89.99' at or near RRP; 'NZ$89.99 · 67% over RRP' when it's well above."""
+    if not rrp:
+        return None
+    if price is not None and price >= rrp * (1 + flag_percent / 100):
+        return f"{_money(rrp)} · {round((price - rrp) / rrp * 100)}% over RRP"
+    if price is not None and price < rrp:
+        return f"{_money(rrp)} · {round((rrp - price) / rrp * 100)}% under RRP"
+    return _money(rrp)
+
+
+def build_embed(e: Event, flag_percent: float = 15) -> dict:
     p = e.product
     fields = [
         {"name": "Retailer", "value": e.store_name, "inline": True},
         {"name": "Price", "value": _money(p.price), "inline": True},
     ]
+    note = rrp_note(p.price, p.rrp, flag_percent)
+    if note:
+        name = "⚠️ Well above RRP" if "over RRP" in note else "RRP"
+        fields.append({"name": name, "value": note, "inline": True})
+    if p.limit:
+        fields.append({"name": "Purchase limit", "value": f"{p.limit} per customer", "inline": True})
     if e.type == PRICE_DROP and e.old_price:
         saved = e.old_price - (p.price or 0)
         fields.append({"name": "Was", "value": f"{_money(e.old_price)} (save {_money(saved)})", "inline": True})
@@ -72,6 +89,7 @@ class DiscordNotifier:
         self.enabled_events = set(config.get("events") or [PREORDER, NEW_LISTING, RESTOCK, PRICE_DROP])
         self.username = config.get("username", "PokéDrop NZ")
         self.avatar = config.get("avatar_url")
+        self.flag_percent = float(config.get("rrp_flag_percent", 15))
 
     def _post(self, url: str, payload: dict):
         for _ in range(5):
@@ -105,7 +123,7 @@ class DiscordNotifier:
                 payload = {
                     "username": self.username,
                     "content": mentions or None,
-                    "embeds": [build_embed(e) for e in chunk],
+                    "embeds": [build_embed(e, self.flag_percent) for e in chunk],
                     "allowed_mentions": {"parse": [], "roles": sorted(role_ids)},
                 }
                 if self.avatar:
