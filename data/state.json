@@ -5,7 +5,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 890.0,
+   "price": 890,
    "store_id": "collectallday",
    "title": "Crimson Invasion",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/crimson-invasion-booster-box"
@@ -15,7 +15,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 2200.0,
+   "price": 2200,
    "store_id": "collectallday",
    "title": "Burning Shadows",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/burning-shadows-booster-box"
@@ -25,7 +25,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 1500.0,
+   "price": 1500,
    "store_id": "collectallday",
    "title": "Sun and Moon",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/sun-and-moon-booster-box"
@@ -35,7 +35,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 5300.0,
+   "price": 5300,
    "store_id": "collectallday",
    "title": "Evolutions",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/evolutions-booster-box"
@@ -45,7 +45,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 8800.0,
+   "price": 8800,
    "store_id": "collectallday",
    "title": "XY Base Set",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/xy-base-set-booster-box"
@@ -55,7 +55,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 4900.0,
+   "price": 4900,
    "store_id": "collectallday",
    "title": "Generations Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/pokemon-generations-elite-trainer"
@@ -65,7 +65,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 2200.0,
+   "price": 2200,
    "store_id": "collectallday",
    "title": "Shining Legends Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/pokemon-shining-legends-elite-trainer"
@@ -75,7 +75,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 5100.0,
+   "price": 5100,
    "store_id": "collectallday",
    "title": "Premium Trainer's XY Collection Box",
    "url": "https://www.collectallday.com/sealed-products/pokemon-premium-trainer-xy-collection"
@@ -85,7 +85,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 130.0,
+   "price": 130,
    "store_id": "collectallday",
    "title": "Sun and Moon Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/pokemon-sun-moon-elite-trainer-box"
@@ -95,7 +95,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 320.0,
+   "price": 320,
    "store_id": "collectallday",
    "title": "Guardians Rising Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/pokemon-guardians-rising-elite-trainer-box"
@@ -105,7 +105,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 220.0,
+   "price": 220,
    "store_id": "collectallday",
    "title": "Burning Shadows Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/pokemon-burning-shadows-elite-trainer-box"
@@ -115,7 +115,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 90.0,
+   "price": 90,
    "store_id": "collectallday",
    "title": "Crimson Invasion Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/pokemon-crimson-invasion-elite-trainer-box"
@@ -125,7 +125,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 240.0,
+   "price": 240,
    "store_id": "collectallday",
    "title": "Espeon/Umbreon-GX Premium Collection",
    "url": "https://www.collectallday.com/sealed-products/pokemon-espeon-umbreon-premium-collection"
@@ -135,7 +135,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 125.0,
+   "price": 125,
    "store_id": "collectallday",
    "title": "Ultra Prism Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/pokemon-ultra-prism-elite-trainer-box"
@@ -145,7 +145,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 3000.0,
+   "price": 3000,
    "store_id": "collectallday",
    "title": "Forbidden Light",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/forbidden-light-booster-box"
@@ -155,7 +155,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 3100.0,
+   "price": 3100,
    "store_id": "collectallday",
    "title": "Ultra Prism",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/ultra-prism-booster-box"
@@ -165,7 +165,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 100.0,
+   "price": 100,
    "store_id": "collectallday",
    "title": "Forbidden Light Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/forbidden-light-elite-trainer-box"
@@ -175,7 +175,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 115.0,
+   "price": 115,
    "store_id": "collectallday",
    "title": "Celestial Storm Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/celestial-storm"
@@ -185,7 +185,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 70.0,
+   "price": 70,
    "store_id": "collectallday",
    "title": "Forbidden Light Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/forbidden-light"
@@ -195,7 +195,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 30.0,
+   "price": 30,
    "store_id": "collectallday",
    "title": "Crimson Invasion Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/crimson-invasion"
@@ -205,7 +205,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 200.0,
+   "price": 200,
    "store_id": "collectallday",
    "title": "Shining Legends Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/shining-legends"
@@ -215,7 +215,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 55.0,
+   "price": 55,
    "store_id": "collectallday",
    "title": "Guardians Rising Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/guardians-rising"
@@ -225,7 +225,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 420.0,
+   "price": 420,
    "store_id": "collectallday",
    "title": "Generations Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/generations"
@@ -235,7 +235,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 65.0,
+   "price": 65,
    "store_id": "collectallday",
    "title": "BREAKpoint Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/breakpoint"
@@ -245,7 +245,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 1600.0,
+   "price": 1600,
    "store_id": "collectallday",
    "title": "Dragon Majesty Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/dragon-majesty-elite-trainer-box"
@@ -255,7 +255,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 85.0,
+   "price": 85,
    "store_id": "collectallday",
    "title": "Dragon Majesty Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/dragon-majesty"
@@ -265,7 +265,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 320.0,
+   "price": 320,
    "store_id": "collectallday",
    "title": "Lost Thunder Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/lost-thunder-elite-trainer-box"
@@ -275,7 +275,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 2750.0,
+   "price": 2750,
    "store_id": "collectallday",
    "title": "Lost Thunder",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/lost-thunder-booster-box"
@@ -285,7 +285,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 4500.0,
+   "price": 4500,
    "store_id": "collectallday",
    "title": "Unbroken Bonds",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/unbroken-bonds-booster-box"
@@ -295,7 +295,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 65.0,
+   "price": 65,
    "store_id": "collectallday",
    "title": "Hidden Fates Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/hidden-fates"
@@ -305,7 +305,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 40.0,
+   "price": 40,
    "store_id": "collectallday",
    "title": "Hidden Fates Ultra Premium Collection",
    "url": "https://www.collectallday.com/sealed-products/pokemon-hidden-fates-ultra-premium"
@@ -315,7 +315,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 75.0,
+   "price": 75,
    "store_id": "collectallday",
    "title": "Cosmic Eclipse Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/cosmic-eclipse"
@@ -325,7 +325,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 100.0,
+   "price": 100,
    "store_id": "collectallday",
    "title": "Unified Minds Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/unified-minds"
@@ -335,7 +335,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 40.0,
+   "price": 40,
    "store_id": "collectallday",
    "title": "Lost Thunder Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/lost-thunder"
@@ -345,7 +345,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 20.0,
+   "price": 20,
    "store_id": "collectallday",
    "title": "Detective Pikachu Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/detective-pikachu"
@@ -355,7 +355,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 12.0,
+   "price": 12,
    "store_id": "collectallday",
    "title": "Sword and Shield Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/sword-and-shield"
@@ -365,7 +365,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 1200.0,
+   "price": 1200,
    "store_id": "collectallday",
    "title": "Sword and Shield",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/sword-shield-booster-box"
@@ -375,7 +375,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 95.0,
+   "price": 95,
    "store_id": "collectallday",
    "title": "Sword and Shield Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/sword-shield-elite-trainer-box"
@@ -385,7 +385,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 230.0,
+   "price": 230,
    "store_id": "collectallday",
    "title": "Hidden Fates Tin",
    "url": "https://www.collectallday.com/new/hidden-fates-tin"
@@ -395,7 +395,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 40.0,
+   "price": 40,
    "store_id": "collectallday",
    "title": "VMAX Rising Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/s1a-booster"
@@ -425,7 +425,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 45.0,
+   "price": 45,
    "store_id": "collectallday",
    "title": "Tag All Stars Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/sm12a-booster"
@@ -445,7 +445,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 15.0,
+   "price": 15,
    "store_id": "collectallday",
    "title": "Dream League Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/sm11b-booster"
@@ -455,7 +455,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 68.0,
+   "price": 68,
    "store_id": "collectallday",
    "title": "Remix Bout Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/sm11a-booster"
@@ -465,7 +465,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 60.0,
+   "price": 60,
    "store_id": "collectallday",
    "title": "Miracle Twin Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/sm11-booster"
@@ -475,7 +475,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 7.0,
+   "price": 7,
    "store_id": "collectallday",
    "title": "Detective Pikachu Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/smp2-booster"
@@ -485,7 +485,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 45.0,
+   "price": 45,
    "store_id": "collectallday",
    "title": "Sky Legend Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/sm10b-booster"
@@ -505,7 +505,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 60.0,
+   "price": 60,
    "store_id": "collectallday",
    "title": "Double Blaze Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/sm10-booster"
@@ -525,7 +525,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 45.0,
+   "price": 45,
    "store_id": "collectallday",
    "title": "Night Unison Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/sm9a-booster"
@@ -535,7 +535,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 85.0,
+   "price": 85,
    "store_id": "collectallday",
    "title": "Tag Bolt Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/sm9-booster"
@@ -545,7 +545,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 125.0,
+   "price": 125,
    "store_id": "collectallday",
    "title": "GX Ultra Shiny Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/sm8b-booster"
@@ -555,7 +555,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 50.0,
+   "price": 50,
    "store_id": "collectallday",
    "title": "Dark Order Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/sm8a-booster"
@@ -565,7 +565,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 95.0,
+   "price": 95,
    "store_id": "collectallday",
    "title": "Explosive Impact Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/sm8-booster"
@@ -575,7 +575,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 100.0,
+   "price": 100,
    "store_id": "collectallday",
    "title": "Champion Road Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/sm6b-booster"
@@ -595,7 +595,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 50.0,
+   "price": 50,
    "store_id": "collectallday",
    "title": "Forbidden Light Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/sm6-booster"
@@ -605,7 +605,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 12.0,
+   "price": 12,
    "store_id": "collectallday",
    "title": "Ultra Force Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/sm5plus-booster"
@@ -615,7 +615,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 200.0,
+   "price": 200,
    "store_id": "collectallday",
    "title": "GX Battle Boost Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/sm4plus-booster"
@@ -645,7 +645,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 150.0,
+   "price": 150,
    "store_id": "collectallday",
    "title": "Shining Legends Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/sm3plus-booster"
@@ -655,7 +655,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 36.0,
+   "price": 36,
    "store_id": "collectallday",
    "title": "The Best of XY Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/boxy-booster"
@@ -665,7 +665,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 20.0,
+   "price": 20,
    "store_id": "collectallday",
    "title": "Facing a New Trial Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/sm2plus-booster"
@@ -675,7 +675,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 7.0,
+   "price": 7,
    "store_id": "collectallday",
    "title": "Islands Await You Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/sm2k-booster"
@@ -685,7 +685,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 7.0,
+   "price": 7,
    "store_id": "collectallday",
    "title": "Alolan Moonlight Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/sm2l-booster"
@@ -695,7 +695,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 10.0,
+   "price": 10,
    "store_id": "collectallday",
    "title": "Strength Expansion Pack Sun & Moon Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/sm1plus-booster"
@@ -705,7 +705,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 600.0,
+   "price": 600,
    "store_id": "collectallday",
    "title": "Rebel Clash",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/rebel-clash-booster-box"
@@ -715,7 +715,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 11.0,
+   "price": 11,
    "store_id": "collectallday",
    "title": "Rebel Clash Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/rebel-clash"
@@ -725,7 +725,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 85.0,
+   "price": 85,
    "store_id": "collectallday",
    "title": "Rebel Clash Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/rebel-clash-elite-trainer-box"
@@ -735,7 +735,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 60.0,
+   "price": 60,
    "store_id": "collectallday",
    "title": "Snorlax/Morpeko Pin Collection Set",
    "url": "https://www.collectallday.com/sealed-products/morpeko-snorlax-pin"
@@ -745,7 +745,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 45.0,
+   "price": 45,
    "store_id": "collectallday",
    "title": "Polteageist V Box",
    "url": "https://www.collectallday.com/sealed-products/polteageist-v-box"
@@ -755,7 +755,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 275.0,
+   "price": 275,
    "store_id": "collectallday",
    "title": "True Steel Premium Collection",
    "url": "https://www.collectallday.com/sealed-products/true-steel-premium-collection"
@@ -765,7 +765,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 285.0,
+   "price": 285,
    "store_id": "collectallday",
    "title": "Unified Minds Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/unified-minds-elite-trainer-box"
@@ -775,7 +775,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 350.0,
+   "price": 350,
    "store_id": "collectallday",
    "title": "Cosmic Eclipse Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/cosmic-eclipse-elite-trainer-box"
@@ -785,7 +785,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 45.0,
+   "price": 45,
    "store_id": "collectallday",
    "title": "Toxtricity V Box",
    "url": "https://www.collectallday.com/sealed-products/toxtricity-v-box"
@@ -795,7 +795,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 60.0,
+   "price": 60,
    "store_id": "collectallday",
    "title": "Alolan Sandslash-GX Box",
    "url": "https://www.collectallday.com/sealed-products/alolan-sandslash-gx-box"
@@ -805,7 +805,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 650.0,
+   "price": 650,
    "store_id": "collectallday",
    "title": "Tag Team Generations Premium Collection",
    "url": "https://www.collectallday.com/sealed-products/tag-team-generations-premium-collection"
@@ -815,7 +815,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 350.0,
+   "price": 350,
    "store_id": "collectallday",
    "title": "Meowth VMAX Special Collection",
    "url": "https://www.collectallday.com/sealed-products/meowth-vmax-special-collection"
@@ -825,7 +825,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 100.0,
+   "price": 100,
    "store_id": "collectallday",
    "title": "Pikachu-GX &amp; Eevee-GX Special Collection",
    "url": "https://www.collectallday.com/sealed-products/pikachu-gx-eevee-gx-special-collection"
@@ -835,7 +835,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 2100.0,
+   "price": 2100,
    "store_id": "collectallday",
    "title": "Dragon Majesty Super-Premium Collection",
    "url": "https://www.collectallday.com/sealed-products/dragon-majesty-super-premium-collection"
@@ -845,7 +845,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 150.0,
+   "price": 150,
    "store_id": "collectallday",
    "title": "Ultra Prism 3-Pack Blister",
    "url": "https://www.collectallday.com/new/ultra-prism-3-pack"
@@ -855,7 +855,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 550.0,
+   "price": 550,
    "store_id": "collectallday",
    "title": "Darkness Ablaze",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/darkness-ablaze-booster-box"
@@ -865,7 +865,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 10.0,
+   "price": 10,
    "store_id": "collectallday",
    "title": "Darkness Ablaze Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/darkness-ablaze"
@@ -875,7 +875,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 95.0,
+   "price": 95,
    "store_id": "collectallday",
    "title": "Darkness Ablaze Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/darkness-ablaze-elite-trainer-box"
@@ -885,7 +885,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 195.0,
+   "price": 195,
    "store_id": "collectallday",
    "title": "Hidden Fates Pin Collection",
    "url": "https://www.collectallday.com/sealed-products/hidden-fates-pin-collection"
@@ -925,7 +925,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 8.0,
+   "price": 8,
    "store_id": "collectallday",
    "title": "Legendary Heartbeat Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/s3a-booster"
@@ -935,7 +935,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 175.0,
+   "price": 175,
    "store_id": "collectallday",
    "title": "Burning Shadows 3-Pack Blister",
    "url": "https://www.collectallday.com/new/burning-shadows-3-pack"
@@ -945,7 +945,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 600.0,
+   "price": 600,
    "store_id": "collectallday",
    "title": "Vivid Voltage",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/vivid-voltage-booster-box"
@@ -955,7 +955,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 200.0,
+   "price": 200,
    "store_id": "collectallday",
    "title": "Vivid Voltage Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/vivid-voltage-elite-trainer-box"
@@ -965,7 +965,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 250.0,
+   "price": 250,
    "store_id": "collectallday",
    "title": "Zacian V or Zamzenta V Elite Trainer Box Plus",
    "url": "https://www.collectallday.com/elite-trainer-boxes/zacian-zamazenta-elite-trainer-box-plus"
@@ -975,7 +975,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 480.0,
+   "price": 480,
    "store_id": "collectallday",
    "title": "SWSH Zacian Zamazenta Ultra Premium Collection",
    "url": "https://www.collectallday.com/sealed-products/zacian-zamazenta-ultra-premium"
@@ -985,7 +985,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 12.0,
+   "price": 12,
    "store_id": "collectallday",
    "title": "Vivid Voltage Theme Deck",
    "url": "https://www.collectallday.com/new/vivid-voltage-theme-deck"
@@ -995,7 +995,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 23.0,
+   "price": 23,
    "store_id": "collectallday",
    "title": "Champions Path Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/champions-path"
@@ -1005,7 +1005,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 120.0,
+   "price": 120,
    "store_id": "collectallday",
    "title": "Dubwool V Collection",
    "url": "https://www.collectallday.com/sealed-products/champions-path-dubwool-v"
@@ -1015,7 +1015,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 120.0,
+   "price": 120,
    "store_id": "collectallday",
    "title": "Hatterene V Collection",
    "url": "https://www.collectallday.com/sealed-products/champions-path-hatterene-v"
@@ -1025,7 +1025,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 160.0,
+   "price": 160,
    "store_id": "collectallday",
    "title": "Marnie Premium Collection",
    "url": "https://www.collectallday.com/sealed-products/champions-path-marnie-special-collection"
@@ -1035,7 +1035,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 22.0,
+   "price": 22,
    "store_id": "collectallday",
    "title": "Shiny Star V Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/s4a-booster"
@@ -1045,7 +1045,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 15.0,
+   "price": 15,
    "store_id": "collectallday",
    "title": "Shining Fates Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/shining-fates"
@@ -1055,7 +1055,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 80.0,
+   "price": 80,
    "store_id": "collectallday",
    "title": "Shining Fates Collection - Pikachu V",
    "url": "https://www.collectallday.com/sealed-products/shining-fates-collection-pikachu-v"
@@ -1065,7 +1065,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 150.0,
+   "price": 150,
    "store_id": "collectallday",
    "title": "Shining Fates Premium Collection - Shiny Crobat VMAX",
    "url": "https://www.collectallday.com/sealed-products/shining-fates-premium-collection-shiny-crobat-vmax"
@@ -1075,7 +1075,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 150.0,
+   "price": 150,
    "store_id": "collectallday",
    "title": "Shining Fates Premium Collection - Shiny Dragapult VMAX",
    "url": "https://www.collectallday.com/sealed-products/shining-fates-premium-collection-shiny-dragapult-vmax"
@@ -1085,7 +1085,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 550.0,
+   "price": 550,
    "store_id": "collectallday",
    "title": "Battle Styles",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/battle-styles-booster-box"
@@ -1095,7 +1095,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 140.0,
+   "price": 140,
    "store_id": "collectallday",
    "title": "Battle Styles Elite Trainer Box Single Strike",
    "url": "https://www.collectallday.com/elite-trainer-boxes/battle-styles-elite-trainer-box-single"
@@ -1105,7 +1105,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 140.0,
+   "price": 140,
    "store_id": "collectallday",
    "title": "Battle Styles Elite Trainer Box Rapid Strike",
    "url": "https://www.collectallday.com/elite-trainer-boxes/battle-styles-elite-trainer-box-rapid"
@@ -1115,7 +1115,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 40.0,
+   "price": 40,
    "store_id": "collectallday",
    "title": "Orbeetle V Box",
    "url": "https://www.collectallday.com/sealed-products/orbeetle-v-box"
@@ -1125,7 +1125,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 60.0,
+   "price": 60,
    "store_id": "collectallday",
    "title": "Amazing Volt Tackle Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/s4-booster"
@@ -1135,7 +1135,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 55.0,
+   "price": 55,
    "store_id": "collectallday",
    "title": "Venusaur VMAX Starter Set",
    "url": "https://www.collectallday.com/new/venusaur-vmax-starter-set"
@@ -1145,7 +1145,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 55.0,
+   "price": 55,
    "store_id": "collectallday",
    "title": "Blastoise VMAX Starter Set",
    "url": "https://www.collectallday.com/new/blastoise-vmax-starter-set"
@@ -1155,7 +1155,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 45.0,
+   "price": 45,
    "store_id": "collectallday",
    "title": "Grimmsnarl VMAX Starter Set",
    "url": "https://www.collectallday.com/new/grimmsnarl-vmax-starter-set"
@@ -1165,7 +1165,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 75.0,
+   "price": 75,
    "store_id": "collectallday",
    "title": "Charizard VMAX Starter Set",
    "url": "https://www.collectallday.com/new/charizard-vmax-starter-set"
@@ -1175,7 +1175,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 1250.0,
+   "price": 1250,
    "store_id": "collectallday",
    "title": "Kanto Power Collection - Mewtwo Slowbro",
    "url": "https://www.collectallday.com/sealed-products/kanto-power-collection-mewtwo-slowbro"
@@ -1185,7 +1185,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 1150.0,
+   "price": 1150,
    "store_id": "collectallday",
    "title": "Kanto Power Collection - Dragonite Pidgeot",
    "url": "https://www.collectallday.com/sealed-products/kanto-power-collection-dragonite-pidgeot"
@@ -1195,7 +1195,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": true,
-   "price": 800.0,
+   "price": 800,
    "store_id": "collectallday",
    "title": "Hidden Fates",
    "url": "https://www.collectallday.com/elite-trainer-boxes/hidden-fates-elite-trainer"
@@ -1205,7 +1205,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 80.0,
+   "price": 80,
    "store_id": "collectallday",
    "title": "Trainers Toolkit",
    "url": "https://www.collectallday.com/sealed-products/trainers-toolkit-lkwwa"
@@ -1215,7 +1215,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 14.0,
+   "price": 14,
    "store_id": "collectallday",
    "title": "Battle Styles Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/battle-styles"
@@ -1225,7 +1225,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 4.0,
+   "price": 4,
    "store_id": "collectallday",
    "title": "Single Strike Master Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/s5i-booster"
@@ -1235,7 +1235,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 4.0,
+   "price": 4,
    "store_id": "collectallday",
    "title": "Rapid Strike Master Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/s5r-booster"
@@ -1245,7 +1245,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 5.0,
+   "price": 5,
    "store_id": "collectallday",
    "title": "Matchless Fighters Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/s5a-booster"
@@ -1255,7 +1255,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 14.0,
+   "price": 14,
    "store_id": "collectallday",
    "title": "Chilling Reign Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/chilling-reign"
@@ -1265,7 +1265,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 1000.0,
+   "price": 1000,
    "store_id": "collectallday",
    "title": "Chilling Reign",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/chilling-reign-booster-box"
@@ -1275,7 +1275,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 200.0,
+   "price": 200,
    "store_id": "collectallday",
    "title": "Chilling Reign Elite Trainer Box Ice Rider",
    "url": "https://www.collectallday.com/elite-trainer-boxes/chilling-reign-elite-trainer-box-ice"
@@ -1285,7 +1285,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 200.0,
+   "price": 200,
    "store_id": "collectallday",
    "title": "Chilling Reign Elite Trainer Box Shadow Rider",
    "url": "https://www.collectallday.com/elite-trainer-boxes/chilling-reign-elite-trainer-box-shadow"
@@ -1295,7 +1295,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 250.0,
+   "price": 250,
    "store_id": "collectallday",
    "title": "Champions Path Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/champions-path-elite-trainer-boxes"
@@ -1305,7 +1305,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 3600.0,
+   "price": 3600,
    "store_id": "collectallday",
    "title": "Eevee Heroes Gym Set",
    "url": "https://www.collectallday.com/sealed-products/eeveelution-set"
@@ -1315,7 +1315,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 7.0,
+   "price": 7,
    "store_id": "collectallday",
    "title": "Eevee Heroes Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/s6a-booster"
@@ -1325,7 +1325,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 4.0,
+   "price": 4,
    "store_id": "collectallday",
    "title": "Silver Lance Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/s6h-booster"
@@ -1335,7 +1335,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 5000.0,
+   "price": 5000,
    "store_id": "collectallday",
    "title": "Evolving Skies",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/evolving-skies-booster-box"
@@ -1345,7 +1345,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 750.0,
+   "price": 750,
    "store_id": "collectallday",
    "title": "Evolving Skies Elite Trainer Box Sylveon",
    "url": "https://www.collectallday.com/elite-trainer-boxes/evolving-skies-elite-trainer-box-sylveon"
@@ -1355,7 +1355,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 750.0,
+   "price": 750,
    "store_id": "collectallday",
    "title": "Evolving Skies Elite Trainer Box Leafeon",
    "url": "https://www.collectallday.com/elite-trainer-boxes/evolving-skies-elite-trainer-box-leafeon"
@@ -1365,7 +1365,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 4.0,
+   "price": 4,
    "store_id": "collectallday",
    "title": "Jet Black Poltergeist Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/s6k-booster"
@@ -1375,7 +1375,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 20.0,
+   "price": 20,
    "store_id": "collectallday",
    "title": "25th Anniversary Collection Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/s8a-booster"
@@ -1385,7 +1385,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 180.0,
+   "price": 180,
    "store_id": "collectallday",
    "title": "Unbroken Bonds 3-Pack Blister",
    "url": "https://www.collectallday.com/new/unbroken-bonds-3-blister"
@@ -1395,7 +1395,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 290.0,
+   "price": 290,
    "store_id": "collectallday",
    "title": "Charizard and Reshiram GX Premium Collection",
    "url": "https://www.collectallday.com/sealed-products/charizard-reshiram-premium-collection"
@@ -1405,7 +1405,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 7.0,
+   "price": 7,
    "store_id": "collectallday",
    "title": "Blue Sky Stream Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/s7r-booster"
@@ -1415,7 +1415,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 220.0,
+   "price": 220,
    "store_id": "collectallday",
    "title": "Marnie Premium Tournament Collection",
    "url": "https://www.collectallday.com/sealed-products/marnie-premium-tournament-collection-break"
@@ -1425,7 +1425,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 75.0,
+   "price": 75,
    "store_id": "collectallday",
    "title": "Evolving Skies Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/evolving-skies"
@@ -1435,7 +1435,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 20.0,
+   "price": 20,
    "store_id": "collectallday",
    "title": "Fusion Strike Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/fusion-strike"
@@ -1445,7 +1445,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 375.0,
+   "price": 375,
    "store_id": "collectallday",
    "title": "Fusion Strike Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/fusion-strike-elite-trainer-box"
@@ -1455,7 +1455,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 70.0,
+   "price": 70,
    "store_id": "collectallday",
    "title": "Celebrations Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/celebrations"
@@ -1465,7 +1465,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 990.0,
+   "price": 990,
    "store_id": "collectallday",
    "title": "Celebrations Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/celebrations-elite-trainer-box"
@@ -1475,7 +1475,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 800.0,
+   "price": 800,
    "store_id": "collectallday",
    "title": "Celebrations US Pokemon Center Exclusive Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/celebrations-pokemon-center-elite-trainer-box"
@@ -1485,7 +1485,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 1750.0,
+   "price": 1750,
    "store_id": "collectallday",
    "title": "Evolving Skies US Pokemon Center Exclusive Elite Trainer Box Leafeon",
    "url": "https://www.collectallday.com/elite-trainer-boxes/evolving-skies-pokemon-center-elite-trainer-box-leafeon"
@@ -1495,7 +1495,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 1800.0,
+   "price": 1800,
    "store_id": "collectallday",
    "title": "Evolving Skies US Pokemon Center Exclusive Elite Trainer Box Sylveon",
    "url": "https://www.collectallday.com/elite-trainer-boxes/evolving-skies-pokemon-center-elite-trainer-box-sylveon"
@@ -1505,7 +1505,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 170.0,
+   "price": 170,
    "store_id": "collectallday",
    "title": "25th Anniversary Collection Promo Pack",
    "url": "https://www.collectallday.com/booster-packs/s8a-promo"
@@ -1515,7 +1515,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 210.0,
+   "price": 210,
    "store_id": "collectallday",
    "title": "Brilliant Stars Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/brilliant-stars-elite-trainer-box"
@@ -1525,7 +1525,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 330.0,
+   "price": 330,
    "store_id": "collectallday",
    "title": "Brilliant Stars US Pokémon Center Exclusive Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/brilliant-stars-pokemon-center-elite-trainer-box"
@@ -1535,7 +1535,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 600.0,
+   "price": 600,
    "store_id": "collectallday",
    "title": "Fusion Strike US Pokémon Center Exclusive Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/fusion-strike-pokemon-center-elite-trainer-box"
@@ -1545,7 +1545,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 200.0,
+   "price": 200,
    "store_id": "collectallday",
    "title": "Greninja V-UNION Special Collection",
    "url": "https://www.collectallday.com/sealed-products/greninja-v-union-collection"
@@ -1555,7 +1555,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 260.0,
+   "price": 260,
    "store_id": "collectallday",
    "title": "Mewtwo V-UNION Special Collection",
    "url": "https://www.collectallday.com/sealed-products/mewtwo-v-union-collection"
@@ -1565,7 +1565,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 170.0,
+   "price": 170,
    "store_id": "collectallday",
    "title": "Zacian V-UNION Special Collection",
    "url": "https://www.collectallday.com/sealed-products/zacian-v-union-collection"
@@ -1575,7 +1575,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 480.0,
+   "price": 480,
    "store_id": "collectallday",
    "title": "Celebrations Pikachu V-UNION Special Collection",
    "url": "https://www.collectallday.com/sealed-products/pikachu-v-union-collection"
@@ -1585,7 +1585,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 220.0,
+   "price": 220,
    "store_id": "collectallday",
    "title": "Shining Fates Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/shining-fates-elite-trainer-box"
@@ -1595,7 +1595,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 40.0,
+   "price": 40,
    "store_id": "collectallday",
    "title": "Japan Post x Pokemon Stamp Box/Sheets/Promo",
    "url": "https://www.collectallday.com/sealed-products/japan-post-pokemon-stamp"
@@ -1605,7 +1605,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 550.0,
+   "price": 550,
    "store_id": "collectallday",
    "title": "Chinese 25th Anniversary Golden Box",
    "url": "https://www.collectallday.com/sealed-products/25th-anniversary-golden-box-jhbww"
@@ -1615,7 +1615,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 50.0,
+   "price": 50,
    "store_id": "collectallday",
    "title": "Ice Rider Calyrex V Box",
    "url": "https://www.collectallday.com/sealed-products/ice-rider-calyrex-v-box"
@@ -1625,7 +1625,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 50.0,
+   "price": 50,
    "store_id": "collectallday",
    "title": "Shadow Rider Calyrex V Box",
    "url": "https://www.collectallday.com/sealed-products/shadow-rider-calyrex-v-box"
@@ -1635,7 +1635,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 1050.0,
+   "price": 1050,
    "store_id": "collectallday",
    "title": "Brilliant Stars",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/brilliant-stars-booster-box"
@@ -1645,7 +1645,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 135.0,
+   "price": 135,
    "store_id": "collectallday",
    "title": "Astral Radiance Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/astral-radiance-elite-trainer-box"
@@ -1655,7 +1655,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 700.0,
+   "price": 700,
    "store_id": "collectallday",
    "title": "Astral Radiance",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/astral-radiance-booster-box"
@@ -1665,7 +1665,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 13.0,
+   "price": 13,
    "store_id": "collectallday",
    "title": "Astral Radiance Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/astral-radiance"
@@ -1675,7 +1675,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 1600.0,
+   "price": 1600,
    "store_id": "collectallday",
    "title": "Lost Origin",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/lost-origin-booster-box"
@@ -1685,7 +1685,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 30.0,
+   "price": 30,
    "store_id": "collectallday",
    "title": "Lost Origin Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/lost-origin"
@@ -1695,7 +1695,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 320.0,
+   "price": 320,
    "store_id": "collectallday",
    "title": "Lost Origin Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/lost-origin-elite-trainer-box"
@@ -1705,7 +1705,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 990.0,
+   "price": 990,
    "store_id": "collectallday",
    "title": "Silver Tempest",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/silver-tempest-booster-box"
@@ -1715,7 +1715,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 25.0,
+   "price": 25,
    "store_id": "collectallday",
    "title": "Silver Tempest Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/silver-tempest"
@@ -1725,7 +1725,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 210.0,
+   "price": 210,
    "store_id": "collectallday",
    "title": "Silver Tempest Elite Trainer Box",
    "url": "https://www.collectallday.com/elite-trainer-boxes/silver-tempest-elite-trainer-box"
@@ -1735,7 +1735,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 1100.0,
+   "price": 1100,
    "store_id": "collectallday",
    "title": "Charizard Ultra Premium Collection",
    "url": "https://www.collectallday.com/sealed-products/charizard-ultra-premium-collection"
@@ -1745,7 +1745,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 510.0,
+   "price": 510,
    "store_id": "collectallday",
    "title": "Scarlet and Violet",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/scarlet-and-violet-booster-box"
@@ -1755,7 +1755,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 950.0,
+   "price": 950,
    "store_id": "collectallday",
    "title": "Paldea Evolved",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/paldea-evolved-booster-box"
@@ -1765,7 +1765,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 670.0,
+   "price": 670,
    "store_id": "collectallday",
    "title": "Obsidian Flames",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/obsidian-flames-booster-box"
@@ -1775,7 +1775,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 45.0,
+   "price": 45,
    "store_id": "collectallday",
    "title": "Burning Shadows Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/burning-shadows"
@@ -1785,7 +1785,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 95.0,
+   "price": 95,
    "store_id": "collectallday",
    "title": "Evolutions Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/evolutions"
@@ -1795,7 +1795,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 40.0,
+   "price": 40,
    "store_id": "collectallday",
    "title": "Fates Collide Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/fates-collide"
@@ -1805,7 +1805,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 75.0,
+   "price": 75,
    "store_id": "collectallday",
    "title": "Primal Clash Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/primal-clash"
@@ -1815,7 +1815,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 80.0,
+   "price": 80,
    "store_id": "collectallday",
    "title": "Roaring Skies Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/roaring-skies"
@@ -1825,7 +1825,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 5.0,
+   "price": 5,
    "store_id": "collectallday",
    "title": "Star Birth Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/s9-booster"
@@ -1835,7 +1835,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 25.0,
+   "price": 25,
    "store_id": "collectallday",
    "title": "Sun and Moon Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/sun-and-moon"
@@ -1845,7 +1845,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 110.0,
+   "price": 110,
    "store_id": "collectallday",
    "title": "Unbroken Bonds Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/unbroken-bonds"
@@ -1855,7 +1855,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 12.0,
+   "price": 12,
    "store_id": "collectallday",
    "title": "Vivid Voltage Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/vivid-voltage"
@@ -1865,7 +1865,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 400.0,
+   "price": 400,
    "store_id": "collectallday",
    "title": "Team Up Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/team-up"
@@ -1875,7 +1875,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 10.0,
+   "price": 10,
    "store_id": "collectallday",
    "title": "Scarlet and Violet Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/scarlet-and-violet"
@@ -1885,7 +1885,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 17.0,
+   "price": 17,
    "store_id": "collectallday",
    "title": "Paldea Evolved Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/paldea-evolved"
@@ -1895,7 +1895,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 18.0,
+   "price": 18,
    "store_id": "collectallday",
    "title": "Obsidian Flames Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/obsidian-flames"
@@ -1905,7 +1905,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 15.0,
+   "price": 15,
    "store_id": "collectallday",
    "title": "Brilliant Stars Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/brilliant-stars"
@@ -1915,7 +1915,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 24.0,
+   "price": 24,
    "store_id": "collectallday",
    "title": "Crown Zenith Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/crown-zenith"
@@ -1925,7 +1925,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 10.0,
+   "price": 10,
    "store_id": "collectallday",
    "title": "Pokemon GO Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/pokemon-go"
@@ -1935,7 +1935,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 12.0,
+   "price": 12,
    "store_id": "collectallday",
    "title": "Paradox Rift Booster Pack",
    "url": "https://www.collectallday.com/booster-packs/paradox-rift"
@@ -1945,7 +1945,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 70.0,
+   "price": 70,
    "store_id": "collectallday",
    "title": "Ultra Pro Acrylic Display Box for Pokemon",
    "url": "https://www.collectallday.com/pokemon-booster-boxes/ultra-pro-acrylic-display-box-pokemon"
@@ -1955,7 +1955,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 130.0,
+   "price": 130,
    "store_id": "collectallday",
    "title": "Lucario VSTAR Premium Collection",
    "url": "https://www.collectallday.com/new/lucario-vstar-premium-collection"
@@ -1965,7 +1965,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 120.0,
+   "price": 120,
    "store_id": "collectallday",
    "title": "Pokeball Tin (Best of 2021 Series)",
    "url": "https://www.collectallday.com/new/pokeball-tin-2021"
@@ -1975,7 +1975,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 85.0,
+   "price": 85,
    "store_id": "collectallday",
    "title": "V Heroes Tin",
    "url": "https://www.collectallday.com/new/v-heroes-tin"
@@ -1985,7 +1985,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 90.0,
+   "price": 90,
    "store_id": "collectallday",
    "title": "V Strikers Tin",
    "url": "https://www.collectallday.com/new/v-strikers-tin"
@@ -1995,7 +1995,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 80.0,
+   "price": 80,
    "store_id": "collectallday",
    "title": "Eeveelutions Tin",
    "url": "https://www.collectallday.com/new/eeveelutions-tin"
@@ -2025,7 +2025,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 600.0,
+   "price": 600,
    "store_id": "collectallday",
    "title": "Vaporeon VMAX Premium Collection",
    "url": "https://www.collectallday.com/new/vaporeon-vmax-premium-collection"
@@ -2035,7 +2035,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 495.0,
+   "price": 495,
    "store_id": "collectallday",
    "title": "Jolteon VMAX Premium Collection",
    "url": "https://www.collectallday.com/new/jolteon-vmax-premium-collection"
@@ -2045,7 +2045,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 495.0,
+   "price": 495,
    "store_id": "collectallday",
    "title": "Flareon VMAX Premium Collection",
    "url": "https://www.collectallday.com/new/flareon-vmax-premium-collection"
@@ -4885,7 +4885,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 48.0,
+   "price": 48,
    "store_id": "jbhifi",
    "title": "Pokemon TCG: 2025 World Championships Deck",
    "url": "https://www.jbhifi.co.nz/products/pokemon-trading-card-game-pokemon-tcg-2025-world-championships-deck"
@@ -4895,7 +4895,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 72.0,
+   "price": 72,
    "store_id": "jbhifi",
    "title": "Pokemon TCG - Mega Lucario ex League Battle Deck",
    "url": "https://www.jbhifi.co.nz/products/card-game-pokemon-tcg-mega-lucario-ex-league-battle-deck"
@@ -4905,7 +4905,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": true,
-   "price": 72.0,
+   "price": 72,
    "store_id": "jbhifi",
    "title": "Pokemon TCG: Mega Greninja ex League Battle Deck",
    "url": "https://www.jbhifi.co.nz/products/pokemon-tcg-pokemon-tcg-mega-greninja-ex-league-battle-deck"
@@ -4915,7 +4915,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": true,
-   "price": 24.0,
+   "price": 24,
    "store_id": "jbhifi",
    "title": "Pokemon TCG: Deck Crafter’s Collection",
    "url": "https://www.jbhifi.co.nz/products/pokemon-tcg-pokemon-tcg-deck-crafters-collection"
@@ -4925,140 +4925,10 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 14.0,
+   "price": 14,
    "store_id": "jbhifi",
    "title": "Pokémon TCG: Mini Portfolio (October 2026)",
    "url": "https://www.jbhifi.co.nz/products/trading-card-game-pokemon-tcg-mini-portfolio-october-2026"
-  },
-  "otakumart:7958594256957": {
-   "available": false,
-   "first_seen": "2026-10-21T08:37:18+00:00",
-   "last_seen": "2026-10-21T08:37:18+00:00",
-   "preorder": false,
-   "price": 18.0,
-   "store_id": "otakumart",
-   "title": "Meowth | Pokemon Plamo Quick!! #28",
-   "url": "https://otakumart.co.nz/products/meowth-pokemon-plamo-quick-28"
-  },
-  "otakumart:7964206039101": {
-   "available": false,
-   "first_seen": "2026-10-21T08:37:18+00:00",
-   "last_seen": "2026-10-21T08:37:18+00:00",
-   "preorder": false,
-   "price": 330.0,
-   "store_id": "otakumart",
-   "title": "Delta Reign Booster Box | Pokemon TCG",
-   "url": "https://otakumart.co.nz/products/delta-reign-booster-box-pokemon-tcg"
-  },
-  "otakumart:7964211118141": {
-   "available": false,
-   "first_seen": "2026-10-21T08:37:18+00:00",
-   "last_seen": "2026-10-21T08:37:18+00:00",
-   "preorder": false,
-   "price": 10.0,
-   "store_id": "otakumart",
-   "title": "Delta Reign Booster Pack | Pokemon TCG",
-   "url": "https://otakumart.co.nz/products/delta-reign-booster-pack-pokemon-tcg"
-  },
-  "otakumart:7964213051453": {
-   "available": false,
-   "first_seen": "2026-10-21T08:37:18+00:00",
-   "last_seen": "2026-10-21T08:37:18+00:00",
-   "preorder": false,
-   "price": 60.0,
-   "store_id": "otakumart",
-   "title": "Delta Reign Booster Bundle | Pokemon TCG",
-   "url": "https://otakumart.co.nz/products/delta-reign-booster-bundle-pokemon-tcg"
-  },
-  "otakumart:7964215935037": {
-   "available": false,
-   "first_seen": "2026-10-21T08:37:18+00:00",
-   "last_seen": "2026-10-21T08:37:18+00:00",
-   "preorder": false,
-   "price": 30.0,
-   "store_id": "otakumart",
-   "title": "Delta Reign 3-Booster Blister | Pokemon TCG",
-   "url": "https://otakumart.co.nz/products/delta-reign-3-booster-blister-pokemon-tcg"
-  },
-  "otakumart:7964217802813": {
-   "available": false,
-   "first_seen": "2026-10-21T08:37:18+00:00",
-   "last_seen": "2026-10-21T08:37:18+00:00",
-   "preorder": false,
-   "price": 115.0,
-   "store_id": "otakumart",
-   "title": "Delta Reign Elite Trainer Box | Pokemon TCG",
-   "url": "https://otakumart.co.nz/products/delta-reign-elite-trainer-box-pokemon-tcg"
-  },
-  "otakumart:8002733867069": {
-   "available": true,
-   "first_seen": "2026-10-21T08:37:18+00:00",
-   "last_seen": "2026-10-21T08:37:18+00:00",
-   "preorder": false,
-   "price": 18.0,
-   "store_id": "otakumart",
-   "title": "Iono and Bellibolt Deck Protector 65ct | Ultra Pro Pokémon",
-   "url": "https://otakumart.co.nz/products/iono-and-bellibolt-deck-protector-65ct-ultra-pro-pokemon"
-  },
-  "otakumart:8017107976253": {
-   "available": false,
-   "first_seen": "2026-10-21T08:37:18+00:00",
-   "last_seen": "2026-10-21T08:37:18+00:00",
-   "preorder": false,
-   "price": 55.2,
-   "store_id": "otakumart",
-   "title": "Nidorina (101) (30th Celebration) (Pokemon Center Exclusive) [Mega Evolution Promo]",
-   "url": "https://otakumart.co.nz/products/nidorina-101-30th-celebration-pokemon-center-exclusive-mega-evolution-promo"
-  },
-  "otakumart:8017109844029": {
-   "available": false,
-   "first_seen": "2026-10-21T08:37:18+00:00",
-   "last_seen": "2026-10-21T08:37:18+00:00",
-   "preorder": false,
-   "price": 21.3,
-   "store_id": "otakumart",
-   "title": "Zarude (088) (Pokemon Center Exclusive) [Mega Evolution Promo]",
-   "url": "https://otakumart.co.nz/products/zarude-088-pokemon-center-exclusive-mega-evolution-promo"
-  },
-  "otakumart:8017377067069": {
-   "available": false,
-   "first_seen": "2026-10-21T08:37:18+00:00",
-   "last_seen": "2026-10-21T08:37:18+00:00",
-   "preorder": false,
-   "price": 15.0,
-   "store_id": "otakumart",
-   "title": "MS-30 Lapras Moncolle",
-   "url": "https://otakumart.co.nz/products/ms-30-lapras-moncolle"
-  },
-  "otakumart:8045395083325": {
-   "available": false,
-   "first_seen": "2026-10-21T08:37:18+00:00",
-   "last_seen": "2026-10-21T08:37:18+00:00",
-   "preorder": false,
-   "price": 13.0,
-   "store_id": "otakumart",
-   "title": "Mini Portfolio (2026 Pitch Black) | Pokemon TCG",
-   "url": "https://otakumart.co.nz/products/mini-portfolio-2026-pitch-black-pokemon-tcg"
-  },
-  "otakumart:8052567179325": {
-   "available": false,
-   "first_seen": "2026-10-21T08:37:18+00:00",
-   "last_seen": "2026-10-21T08:37:18+00:00",
-   "preorder": false,
-   "price": 170.0,
-   "store_id": "otakumart",
-   "title": "Ascended Heroes Focused Fighters Premium Collection | Pokemon TCG",
-   "url": "https://otakumart.co.nz/products/ascended-heroes-focused-fighters-premium-collection-pokemon-tcg"
-  },
-  "otakumart:8062458462269": {
-   "available": true,
-   "first_seen": "2026-10-21T08:37:18+00:00",
-   "last_seen": "2026-10-21T08:37:18+00:00",
-   "preorder": false,
-   "price": 55.0,
-   "store_id": "otakumart",
-   "title": "Pokémon Pre-release: Mega Evolution—Delta Reign [Sat, 24th Oct 2026 @ 5PM]",
-   "url": "https://otakumart.co.nz/products/pokemon-pre-release-mega-evolution-delta-reign"
   },
   "tcgcollector:7511695261892": {
    "available": true,
@@ -5085,7 +4955,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 80.0,
+   "price": 80,
    "store_id": "tcgcollector",
    "title": "Pokemon TCG: Scarlet & Violet: Shrouded Fable Booster Pack BUNDLE *Sealed*",
    "url": "https://tcgcollectornz.com/products/pokemon-tcg-scarlet-violet-shrouded-fable-booster-pack-bundle-sealed-pre-order-ships-sep-6th"
@@ -5105,7 +4975,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 90.0,
+   "price": 90,
    "store_id": "tcgcollector",
    "title": "Pokemon TCG: Charizard ex Special Collection *Sealed*",
    "url": "https://tcgcollectornz.com/products/pokemon-tcg-charizard-ex-special-collection-sealed-pre-order-ships-11th-april"
@@ -5125,7 +4995,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 8.0,
+   "price": 8,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Scarlet & Violet: Battle Partners Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-battle-partners-booster-pack-sealed"
@@ -5135,7 +5005,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 13.0,
+   "price": 13,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Scarlet & Violet: Heat Wave Arena Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-heat-wave-arena-booster-pack-sealed"
@@ -5155,7 +5025,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 17.0,
+   "price": 17,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Scarlet & Violet: Glory of Team Rocket Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-glory-of-team-rocket-booster-pack-sealed"
@@ -5165,7 +5035,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 35.0,
+   "price": 35,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Scarlet & Violet: Terastal Festival ex Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-terastal-festival-ex-booster-pack-sealed"
@@ -5175,7 +5045,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 10.0,
+   "price": 10,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Scarlet & Violet: Paradise Dragona Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-paradise-dragona-booster-pack-sealed"
@@ -5185,7 +5055,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 8.0,
+   "price": 8,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Scarlet & Violet: Stellar Miracle Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-stellar-miracle-booster-pack-sealed"
@@ -5195,7 +5065,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 8.0,
+   "price": 8,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Scarlet & Violet: Night Wanderer Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-night-wanderer-booster-pack-sealed"
@@ -5205,7 +5075,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 9.0,
+   "price": 9,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Scarlet & Violet: Mask of Change Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-mask-of-change-booster-pack-sealed"
@@ -5215,7 +5085,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 9.0,
+   "price": 9,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Scarlet & Violet: Crimson Haze Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-crimson-haze-booster-pack-sealed"
@@ -5225,7 +5095,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 8.0,
+   "price": 8,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Scarlet & Violet: Cyber Judge Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-cyber-judge-booster-pack-sealed"
@@ -5235,7 +5105,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 10.0,
+   "price": 10,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Scarlet & Violet: Wild Force Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-wild-force-booster-pack-sealed"
@@ -5245,7 +5115,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 35.0,
+   "price": 35,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Scarlet & Violet: Shiny Treasure Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-shiny-treasure-booster-pack-sealed"
@@ -5255,7 +5125,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 8.0,
+   "price": 8,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Scarlet & Violet: Ancient Roar Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-ancient-roar-booster-pack-sealed"
@@ -5265,7 +5135,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 8.0,
+   "price": 8,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Scarlet & Violet: Future Flash Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-future-flash-booster-pack-sealed"
@@ -5275,7 +5145,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 9.0,
+   "price": 9,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Scarlet & Violet: Raging Surf Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-raging-surf-booster-pack-sealed"
@@ -5285,7 +5155,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 13.0,
+   "price": 13,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Scarlet & Violet: Ruler of the Black Flame Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-ruler-of-the-black-flame-booster-pack-sealed"
@@ -5295,7 +5165,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 8.0,
+   "price": 8,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Scarlet & Violet: Clay Burst Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-clay-burst-booster-pack-sealed"
@@ -5305,7 +5175,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 8.0,
+   "price": 8,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Scarlet & Violet: Snow Hazard Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-snow-hazard-booster-pack-sealed"
@@ -5315,7 +5185,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 13.0,
+   "price": 13,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Scarlet & Violet: Triple Beat Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-triple-beat-booster-pack-sealed"
@@ -5325,7 +5195,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 9.0,
+   "price": 9,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Scarlet & Violet: Violet ex Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-violet-booster-pack-sealed"
@@ -5335,7 +5205,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 9.0,
+   "price": 9,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Scarlet & Violet: Scarlet ex Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-scarlet-ex-booster-pack-sealed"
@@ -5515,7 +5385,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 25.0,
+   "price": 25,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Scarlet & Violet: Black Bolt Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-black-bolt-booster-pack-sealed"
@@ -5525,7 +5395,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 25.0,
+   "price": 25,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Scarlet & Violet: White Flare Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-white-bolt-booster-pack-sealed"
@@ -5565,7 +5435,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 8.0,
+   "price": 8,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Mega Evolution: Symphonia Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-mega-symphonia-booster-pack-sealed"
@@ -5575,7 +5445,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 8.0,
+   "price": 8,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Mega Evolution: Brave Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-scarlet-violet-mega-brave-booster-pack-sealed"
@@ -5605,7 +5475,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 13.0,
+   "price": 13,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Mega Evolution Inferno X Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-mega-evolution-inferno-x-booster-pack-sealed"
@@ -5615,7 +5485,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 40.0,
+   "price": 40,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Sword & Shield Shiny Star V Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-sword-shield-high-class-shiny-star-v-booster-pack-sealed"
@@ -5625,7 +5495,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 60.0,
+   "price": 60,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Sword & Shield VSTAR Universe Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-sword-shield-vstar-universe-booster-pack-sealed"
@@ -5645,7 +5515,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 25.0,
+   "price": 25,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Mega Evolution Mega Dream Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-mega-evolution-mega-dream-booster-pack-sealed"
@@ -5655,7 +5525,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 6.0,
+   "price": 6,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Mega Evolution Nullifying Zero Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-mega-evolution-nullifying-zero-booster-pack-sealed"
@@ -5685,7 +5555,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 8.0,
+   "price": 8,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Mega Evolution Ninja Spinner Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-mega-evolution-ninja-spinner-booster-pack-sealed"
@@ -5705,7 +5575,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 14.0,
+   "price": 14,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Sword & Shield Dark Phantasma Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-sword-shield-dark-phantasma-booster-pack-sealed"
@@ -5725,7 +5595,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 50.0,
+   "price": 50,
    "store_id": "tcgcollector",
    "title": "Pokemon TCG: 2025 World Championships Deck *Sealed*",
    "url": "https://tcgcollectornz.com/products/pokemon-tcg-2025-world-championships-deck-sealed"
@@ -5745,7 +5615,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 8.0,
+   "price": 8,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Mega Evolution Abyss Eye Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-mega-evolution-abyss-eye-booster-pack-sealed"
@@ -5765,7 +5635,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 8.0,
+   "price": 8,
    "store_id": "tcgcollector",
    "title": "Japanese Pokemon TCG: Mega Evolution Storm Emeralda Booster Pack *Sealed*",
    "url": "https://tcgcollectornz.com/products/japanese-pokemon-tcg-mega-evolution-storm-emeralda-booster-pack-sealed"
@@ -5775,7 +5645,7 @@
    "first_seen": "2026-10-21T08:37:18+00:00",
    "last_seen": "2026-10-21T08:37:18+00:00",
    "preorder": false,
-   "price": 14.0,
+   "price": 14,
    "store_id": "tcgcollector",
    "title": "Pokemon TCG: Mini Portfolio (September 2026) *Sealed*",
    "url": "https://tcgcollectornz.com/products/pokemon-tcg-mini-portfolio-september-2026-sealed"
@@ -6048,12 +5918,7 @@
    "product_count": 205,
    "seeded": true
   },
-  "farmers": {
-   "failures": 0,
-   "last_ok": "2026-10-21T08:37:18+00:00",
-   "product_count": 0,
-   "seeded": true
-  },
+  "farmers": {},
   "gametree": {
    "failures": 0,
    "last_ok": "2026-10-21T08:37:18+00:00",
@@ -6066,12 +5931,7 @@
    "product_count": 5,
    "seeded": true
   },
-  "otakumart": {
-   "failures": 0,
-   "last_ok": "2026-10-21T08:37:18+00:00",
-   "product_count": 13,
-   "seeded": true
-  },
+  "otakumart": {},
   "tcgcollector": {
    "failures": 0,
    "last_ok": "2026-10-21T08:37:18+00:00",
