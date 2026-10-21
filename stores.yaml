@@ -1,0 +1,162 @@
+# PokéDrop NZ: which shops to watch and how.
+#
+# Secrets use ${NAME} and are read from environment variables
+# (GitHub Secrets, or a .env file next to this one when running locally).
+#
+# Adapters:
+#   shopify      reads /products.json (fast, reliable, includes stock)
+#   woocommerce  reads the public WooCommerce Store API
+#   squarespace  reads ?format=json on shop pages
+#   html         reads product data embedded in normal web pages
+#                (add `render: true` for JavaScript-heavy sites)
+#
+# Not sure which to use? Run:  python -m pokedrop detect https://shop.co.nz/pokemon-page
+
+settings:
+  price_drop_percent: 5        # alert when a price falls by at least this much
+  cooldown_minutes: 60         # don't repeat the same alert for an item within this window
+  min_delay_seconds: 2         # pause between requests to the same shop
+  respect_robots_txt: true     # leave this on
+  alert_after_failures: 6      # tell the health channel if a shop keeps failing
+  forget_after_days: 45
+  parallel_stores: 6
+  filter:
+    include: [pokemon]         # accents are ignored, so this matches Pokémon
+    # exclude: [...]           # uncomment to replace the built-in list (plush, figures, books ...)
+    min_price: 4               # skips single cards and accessories under NZ$4
+
+discord:
+  webhook: ${DISCORD_WEBHOOK}             # main alerts channel
+  health_webhook: ${DISCORD_HEALTH_WEBHOOK} # optional: tells you when a shop stops scanning
+  webhooks:                               # optional: send some alert types to their own channel
+    preorder: ${DISCORD_PREORDER_WEBHOOK}
+  roles:                                  # optional: role IDs to ping (Server Settings > Roles > Copy ID)
+    preorder: ${DISCORD_ROLE_PREORDER}
+    restock: ${DISCORD_ROLE_RESTOCK}
+  events: [preorder, new, restock, price_drop]
+  username: PokéDrop NZ
+
+wordpress:
+  url: ${WP_URL}               # e.g. https://drops.example.co.nz
+  secret: ${WP_SECRET}         # same value as in the WordPress plugin settings
+  send_status: true
+
+stores:
+  # ---------------------------------------------------------------- Shopify
+  - id: gametree
+    name: The Game Tree
+    url: https://thegametree.co.nz
+    adapter: shopify
+    pokemon_only: true         # these collections only hold Pokémon
+    collections:
+      - blisters-and-booster-packs-english
+      - blisters-and-booster-packs-japanese
+      - booster-boxes-and-cases-english
+      - booster-boxes-and-cases-japanese
+      - elite-trainer-boxes-collections-and-tins
+
+  - id: tcgcollector
+    name: TCG Collector NZ
+    url: https://tcgcollectornz.com
+    adapter: shopify
+    pokemon_only: true
+    collections:
+      - pokemon-tcg-collector-nz
+      - pokemon-tcg-japanese
+
+  - id: otakumart
+    name: Otakumart
+    url: https://otakumart.co.nz
+    adapter: shopify
+    max_pages: 20              # whole-shop feed, filtered to Pokémon titles
+    # Tip: replace with `collections: [<handle>]` once you find their Pokémon collection URL
+
+  - id: toyworld
+    name: Toyworld
+    url: https://www.toyworld.co.nz
+    adapter: shopify
+    collections:               # their whole shop is 10,000+ items, so only read these two
+      - trading-cards
+      - pokemon
+
+  # ------------------------------------------------------------ Squarespace
+  - id: collectallday
+    name: Collect All Day
+    url: https://www.collectallday.com
+    adapter: squarespace
+    pokemon_only: true
+    pages:
+      - /pokemon-booster-boxes
+      - /booster-packs
+      - /elite-trainer-boxes
+      - /sealed-products
+      - /new
+
+  # ------------------------------------------------- JB Hi-Fi and Farmers
+  # JB Hi-Fi runs on Shopify, but its category pages are filled in by
+  # JavaScript, so the scanner opens the page in a headless browser and reads
+  # the product cards. Needs Playwright (already switched on in the workflow).
+  - id: jbhifi
+    name: JB Hi-Fi NZ
+    url: https://www.jbhifi.co.nz
+    adapter: html
+    render: true
+    pokemon_only: true
+    pages: [/collections/collectibles-merchandise/pokemon-trading-cards]
+    selectors:
+      item: .ProductCard
+      title: "[data-testid=product-card-title]"
+      link: "a[data-testid=product-card-content-link]"
+      price: "[data-testid=ticket-price]"
+      image: img
+      buy_button: "[data-testid=product-card-actions]"
+      available_text: ["add to cart", "pre-order"]
+
+  # Farmers' category tiles don't show stock, so the scanner reads the first
+  # page of Trading Cards (newest first), then opens each Pokémon product to
+  # check stock. Farmers' robots.txt blocks its sorting and paging links, so
+  # only the first 24 items are read, which is where new releases appear.
+  - id: farmers
+    name: Farmers
+    url: https://www.farmers.co.nz
+    adapter: html
+    missing_means_sold_out: false
+    pages: [/toys/games-cards-puzzles/trading-cards]
+    detail_pages: true
+    selectors:
+      item: .product-tile
+      title: .product-title-span
+      link: a.product-title
+      price: .current-price
+      image: img.product-image
+
+  # -------------------------------------------- big-box retailers (custom)
+  # These sites are custom builds. Run `detect` on their Pokémon category page,
+  # then set `enabled: true`. Some use bot protection and may need `render: true`.
+  - id: warehouse
+    name: The Warehouse
+    url: https://www.thewarehouse.co.nz
+    adapter: html
+    enabled: false
+    missing_means_sold_out: false
+    pages: ["/search?q=pokemon+trading+cards"]   # check with `detect`
+
+  - id: mightyape
+    name: Mighty Ape
+    url: https://www.mightyape.co.nz
+    adapter: html
+    enabled: false
+    missing_means_sold_out: false
+    pages: [/mn/pokemon/]
+
+  - id: kmart
+    name: Kmart NZ
+    url: https://www.kmart.co.nz
+    adapter: html
+    enabled: false
+    render: true
+    missing_means_sold_out: false
+    pages: [CHANGE-ME]         # paste the URL of Toys > Pokemon Trading Cards
+
+  # Add more shops by copying an entry above. Ideas: Whitcoulls, Paper Plus,
+  # EB Games, Pokémon Center NZ (heavily bot-protected) and your local game stores.

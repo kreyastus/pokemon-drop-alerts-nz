@@ -1,0 +1,229 @@
+"""Command line entry point.
+
+  python -m pokedrop scan                 # one pass over every enabled store
+  python -m pokedrop loop --every 5       # keep scanning every 5 minutes (VPS / Raspberry Pi)
+  python -m pokedrop detect <url>         # work out how to watch a new shop
+  python -m pokedrop test-discord         # send a sample alert to check your webhook
+  python -m pokedrop list <store-id>      # show what the scanner sees at one store
+"""
+from __future__ import annotations
+
+import argparse
+import logging
+import sys
+import time
+from concurrent.futures import ThreadPoolExecutor
+
+from . import config as config_mod
+from .adapters import ADAPTERS
+from .detect import detect
+from .filters import ProductFilter
+from .http import PoliteClient
+from .models import Event, Product, PREORDER
+from .notify import DiscordNotifier, WordPressNotifier
+from .state import State, now_iso
+
+log = logging.getLogger("pokedrop")
+
+FULL_FEED_ADAPTERS = {"shopify", "woocommerce", "squarespace"}
+
+
+def _client(settings: dict) -> PoliteClient:
+    kwargs = dict(
+        min_delay=float(settings.get("min_delay_seconds", 2)),
+        respect_robots=bool(settings.get("respect_robots_txt", True)),
+    )
+    if settings.get("user_agent"):
+        kwargs["user_agent"] = settings["user_agent"]
+    return PoliteClient(**kwargs)
+
+
+def _filter_for(store: dict, settings: dict) -> ProductFilter:
+    f = {**(settings.get("filter") or {}), **(store.get("filter") or {})}
+    return ProductFilter(
+        include=f.get("include"),
+        exclude=f.get("exclude"),
+        min_price=f.get("min_price"),
+        max_price=f.get("max_price"),
+    )
+
+
+def fetch_store(store: dict, settings: dict) -> tuple[dict, list[Product] | None, str | None]:
+    adapter = ADAPTERS.get(store.get("adapter", ""))
+    if adapter is None:
+        return store, None, f"unknown adapter '{store.get('adapter')}'"
+    try:
+        products = adapter(store, _client(settings))
+    except Exception as exc:  # noqa: BLE001 - one bad store must not stop the rest
+        return store, None, f"{type(exc).__name__}: {exc}"
+    pf = _filter_for(store, settings)
+    assume = bool(store.get("pokemon_only"))  # whole collection is Pokémon already
+    return store, [p for p in products if pf.matches(p, assume_pokemon=assume)], None
+
+
+def run_scan(cfg: dict, state_path: str, dry_run: bool = False) -> list[Event]:
+    settings = cfg["settings"]
+    stores = [s for s in cfg["stores"] if s.get("enabled", True)]
+    state = State(state_path)
+    all_events: list[Event] = []
+    health: list[str] = []
+    status_rows = []
+
+    # Different shops run in parallel; requests to the same shop stay sequential.
+    with ThreadPoolExecutor(max_workers=int(settings.get("parallel_stores", 6))) as pool:
+        results = list(pool.map(lambda s: fetch_store(s, settings), stores))
+
+    for store, products, error in results:
+        sid = store["id"]
+        st = state.data["stores"].setdefault(sid, {})
+        if error:
+            st["failures"] = st.get("failures", 0) + 1
+            st["last_error"] = error
+            log.warning("%s: failed (%s) [%d in a row]", sid, error, st["failures"])
+            if st["failures"] == int(settings.get("alert_after_failures", 6)):
+                health.append(f"⚠️ **{store.get('name', sid)}** has failed {st['failures']} scans in a row: `{error[:150]}`")
+            status_rows.append({"store_id": sid, "store_name": store.get("name", sid), "ok": False, "checked_at": now_iso()})
+            continue
+        if st.get("failures", 0) >= int(settings.get("alert_after_failures", 6)):
+            health.append(f"✅ **{store.get('name', sid)}** is scanning again.")
+        st["failures"] = 0
+        st.pop("last_error", None)
+        events = state.diff(
+            store,
+            products,
+            price_drop_pct=float(settings.get("price_drop_percent", 5)),
+            cooldown_minutes=int(settings.get("cooldown_minutes", 60)),
+            missing_means_sold_out=store.get(
+                "missing_means_sold_out", store.get("adapter") in FULL_FEED_ADAPTERS
+            ),
+        )
+        log.info("%s: %d Pokémon products, %d new events", sid, len(products), len(events))
+        all_events.extend(events)
+        status_rows.append({
+            "store_id": sid, "store_name": store.get("name", sid), "ok": True,
+            "checked_at": now_iso(), "products": len(products),
+            "in_stock": sum(1 for p in products if p.available),
+        })
+
+    # Most exciting first: pre-orders, then new, restock, price drops.
+    order = {PREORDER: 0, "new": 1, "restock": 2, "price_drop": 3}
+    all_events.sort(key=lambda e: order.get(e.type, 9))
+
+    if dry_run:
+        for e in all_events:
+            print(f"[{e.type}] {e.store_name}: {e.product.title} ({e.product.price}) {e.product.url}")
+    else:
+        _deliver(cfg, all_events, health, status_rows)
+    state.prune(int(settings.get("forget_after_days", 45)))
+    state.save()
+    return all_events
+
+
+def _deliver(cfg, events, health, status_rows):
+    dcfg = cfg.get("discord") or {}
+    if dcfg.get("webhook") or dcfg.get("webhooks"):
+        if events:
+            DiscordNotifier(dcfg).send(events)
+        hook = dcfg.get("health_webhook")
+        if hook and health:
+            import requests
+            requests.post(hook, json={"content": "\n".join(health)[:1900]}, timeout=20)
+    wcfg = cfg.get("wordpress") or {}
+    if wcfg.get("url") and wcfg.get("secret"):
+        wp = WordPressNotifier(wcfg)
+        try:
+            if events:
+                wp.send(events)
+            if wcfg.get("send_status", True):
+                wp.send_status(status_rows)
+        except Exception as exc:  # noqa: BLE001
+            log.error("WordPress delivery failed: %s", exc)
+
+
+# ------------------------------------------------------------------- commands
+def cmd_scan(args):
+    cfg = config_mod.load(args.config)
+    events = run_scan(cfg, args.state, dry_run=args.dry_run)
+    log.info("Done: %d alerts", len(events))
+
+
+def cmd_loop(args):
+    while True:
+        started = time.monotonic()
+        try:
+            cmd_scan(args)
+        except Exception:  # noqa: BLE001
+            log.exception("Scan crashed; trying again next round")
+        wait = max(30, args.every * 60 - (time.monotonic() - started))
+        log.info("Sleeping %.0fs", wait)
+        time.sleep(wait)
+
+
+def cmd_detect(args):
+    cfg = config_mod.load(args.config) if args.config else {"settings": {}}
+    print(detect(args.url, _client(cfg.get("settings", {}))))
+
+
+def cmd_list(args):
+    cfg = config_mod.load(args.config)
+    store = next((s for s in cfg["stores"] if s["id"] == args.store), None)
+    if not store:
+        sys.exit(f"No store with id '{args.store}' in {args.config}")
+    _, products, error = fetch_store(store, cfg["settings"])
+    if error:
+        sys.exit(f"Failed: {error}")
+    for p in sorted(products, key=lambda p: (not p.available, p.title)):
+        flag = "PRE " if p.preorder else ("IN  " if p.available else "OUT ")
+        price = f"${p.price:,.2f}" if p.price is not None else "   ?"
+        print(f"{flag} {price:>10}  {p.title[:70]}")
+    print(f"\n{len(products)} Pokémon products, {sum(p.available for p in products)} available")
+
+
+def cmd_test_discord(args):
+    cfg = config_mod.load(args.config)
+    sample = Product(
+        store_id="test", product_id="1", title="Test alert: Pokémon TCG Elite Trainer Box",
+        url="https://example.com", price=89.99, available=True, preorder=True,
+    )
+    DiscordNotifier(cfg.get("discord") or {}).send([Event(PREORDER, sample, "PokéDrop test", None, now_iso())])
+    print("Sent. Check your Discord channel.")
+
+
+def main(argv=None):
+    ap = argparse.ArgumentParser(prog="pokedrop", description="NZ Pokémon TCG drop alerts")
+    ap.add_argument("-c", "--config", default="stores.yaml")
+    ap.add_argument("-s", "--state", default="data/state.json")
+    ap.add_argument("-v", "--verbose", action="store_true")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+
+    p = sub.add_parser("scan", help="scan once")
+    p.add_argument("--dry-run", action="store_true", help="print alerts instead of sending them")
+    p.set_defaults(func=cmd_scan)
+
+    p = sub.add_parser("loop", help="scan forever")
+    p.add_argument("--every", type=float, default=5, help="minutes between scans")
+    p.add_argument("--dry-run", action="store_true")
+    p.set_defaults(func=cmd_loop)
+
+    p = sub.add_parser("detect", help="work out how to watch a shop")
+    p.add_argument("url")
+    p.set_defaults(func=cmd_detect)
+
+    p = sub.add_parser("list", help="show products found at one store")
+    p.add_argument("store")
+    p.set_defaults(func=cmd_list)
+
+    p = sub.add_parser("test-discord", help="send a sample alert")
+    p.set_defaults(func=cmd_test_discord)
+
+    args = ap.parse_args(argv)
+    logging.basicConfig(
+        level=logging.DEBUG if args.verbose else logging.INFO,
+        format="%(asctime)s %(levelname)s %(message)s",
+        datefmt="%H:%M:%S",
+    )
+    args.func(args)
+
+
+if __name__ == "__main__":
+    main()

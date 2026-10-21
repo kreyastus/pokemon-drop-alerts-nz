@@ -1,0 +1,60 @@
+"""Sends events to the PokéDrop Feed WordPress plugin.
+
+Requests are signed with HMAC-SHA256 using a shared secret, so nobody else
+can post fake drops to your site."""
+from __future__ import annotations
+
+import hashlib
+import hmac
+import json
+import logging
+import time
+
+import requests
+
+from ..models import Event
+
+log = logging.getLogger(__name__)
+
+
+def sign(secret: str, timestamp: str, body: bytes) -> str:
+    msg = timestamp.encode() + b"." + body
+    return hmac.new(secret.encode(), msg, hashlib.sha256).hexdigest()
+
+
+class WordPressNotifier:
+    def __init__(self, config: dict):
+        base = config["url"].rstrip("/")
+        self.endpoint = base + "/wp-json/pokedrop/v1/drops"
+        # Works even when the site uses "Plain" permalinks.
+        self.fallback = base + "/?rest_route=/pokedrop/v1/drops"
+        self.secret = config["secret"]
+
+    def _post(self, payload: dict):
+        body = json.dumps(payload, separators=(",", ":"), ensure_ascii=False).encode()
+        ts = str(int(time.time()))
+        headers = {
+            "Content-Type": "application/json",
+            "X-PokeDrop-Timestamp": ts,
+            "X-PokeDrop-Signature": sign(self.secret, ts, body),
+        }
+        r = requests.post(self.endpoint, data=body, headers=headers, timeout=30)
+        not_api = r.status_code == 404 or "json" not in r.headers.get("Content-Type", "")
+        if not_api and self.endpoint != self.fallback:
+            log.info("Pretty REST URL not found, switching to ?rest_route=")
+            self.endpoint = self.fallback
+            r = requests.post(self.endpoint, data=body, headers=headers, timeout=30)
+        if r.status_code >= 400:
+            log.error("WordPress error %s: %s", r.status_code, r.text[:300])
+        return r
+
+    def send(self, events: list[Event]):
+        for i in range(0, len(events), 100):
+            chunk = [e.to_dict() for e in events[i : i + 100]]
+            r = self._post({"drops": chunk})
+            if r is not None and r.ok:
+                log.info("Sent %d drops to WordPress", len(chunk))
+
+    def send_status(self, stores: list[dict]):
+        """Optional heartbeat so the site can show 'last checked' per retailer."""
+        self._post({"status": stores})
