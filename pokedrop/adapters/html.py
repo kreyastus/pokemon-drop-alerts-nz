@@ -269,7 +269,9 @@ def _fetch(store: dict, client: PoliteClient, renderer: _Renderer | None) -> lis
         if not found or store.get("prefer_selectors"):
             found = parse_selectors(store, html, url) or found
         if not found:
-            log.warning("%s: no products found on %s (%s)", store["id"], url, _describe(html))
+            # A listing page with nothing on it is almost always a block or error
+            # page, so it counts as a failed check rather than an empty shop.
+            raise RuntimeError(f"no products found on {url} ({_describe(html)})")
         for p in found:
             seen[p.key] = p
     products = list(seen.values())
