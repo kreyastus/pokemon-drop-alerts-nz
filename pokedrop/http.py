@@ -13,7 +13,7 @@ log = logging.getLogger(__name__)
 
 DEFAULT_UA = (
     "Mozilla/5.0 (compatible; PokeDropNZ/1.0; personal stock alerts; "
-    "+https://github.com/your-name/pokedrop-nz)"
+    "+https://github.com/kreyastus/pokemon-drop-alerts-nz)"
 )
 
 
@@ -79,27 +79,35 @@ class PoliteClient:
         self._last_hit[host] = time.monotonic()
 
     # requests --------------------------------------------------------------
-    def get(self, url: str, **kwargs) -> requests.Response:
+    def _request(self, method: str, url: str, **kwargs) -> requests.Response:
         if not self.allowed(url):
             raise RobotsDisallowed(url)
         attempt = 0
         while True:
             self._wait_for_host(url)
             try:
-                r = self.session.get(url, timeout=self.timeout, **kwargs)
+                r = self.session.request(method, url, timeout=self.timeout, **kwargs)
             except requests.RequestException as exc:
                 if attempt >= self.retries:
                     raise
-                log.debug("GET %s failed (%s), retrying", url, exc)
+                log.debug("%s %s failed (%s), retrying", method, url, exc)
             else:
                 if r.status_code in (429, 500, 502, 503, 504) and attempt < self.retries:
                     wait = float(r.headers.get("Retry-After", 0) or 0) or 5 * (attempt + 1)
-                    log.debug("GET %s -> %s, waiting %.0fs", url, r.status_code, wait)
+                    log.debug("%s %s -> %s, waiting %.0fs", method, url, r.status_code, wait)
                     time.sleep(min(wait, 60))
                 else:
                     return r
             attempt += 1
             time.sleep(2 ** attempt)
+
+    def get(self, url: str, **kwargs) -> requests.Response:
+        return self._request("GET", url, **kwargs)
+
+    def post_form(self, url: str, data: dict, headers: dict | None = None) -> requests.Response:
+        """A form POST with the same manners as get(): robots.txt, spacing, retries.
+        Only used for read-only lookups a shop's own pages make, such as branch stock."""
+        return self._request("POST", url, data=data, headers=headers or {})
 
     def get_json(self, url: str, **kwargs):
         r = self.get(url, headers={"Accept": "application/json"}, **kwargs)
