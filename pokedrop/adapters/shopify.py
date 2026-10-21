@@ -55,6 +55,7 @@ def parse_products(store: dict, payload: dict) -> list[Product]:
 def fetch(store: dict, client: PoliteClient) -> list[Product]:
     base = store["url"].rstrip("/")
     collections = store.get("collections") or [None]
+    preorder_collections = set(store.get("preorder_collections") or [])
     max_pages = int(store.get("max_pages", 10))
     seen: dict[str, Product] = {}
     for handle in collections:
@@ -64,6 +65,10 @@ def fetch(store: dict, client: PoliteClient) -> list[Product]:
             payload = client.get_json(url)
             batch = parse_products(store, payload)
             for prod in batch:
+                if handle in preorder_collections:
+                    prod.preorder = True  # e.g. Otakumart's "pre-order-pokemon-tcg"
+                if prod.key in seen and seen[prod.key].preorder:
+                    prod.preorder = True
                 seen[prod.key] = prod
             if len(payload.get("products", [])) < PAGE_SIZE:
                 break
