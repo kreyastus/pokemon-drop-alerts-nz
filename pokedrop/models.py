@@ -19,6 +19,8 @@ class Product:
     image: Optional[str] = None
     compare_at_price: Optional[float] = None
     tags: list[str] = field(default_factory=list)
+    limit: Optional[int] = None       # purchase limit per customer, if the retailer states one
+    rrp: Optional[float] = None       # recommended retail price, from rrp.yaml
 
     @property
     def key(self) -> str:
