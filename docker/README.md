@@ -8,21 +8,26 @@ It reads only public pages that each shop's robots.txt allows, names itself in
 every request ("PokeDropNZ/1.0 … personal stock alerts") and waits a few
 seconds between pages. Farmers is checked every 20 minutes and Kmart every 30.
 
-## Set up
+## Set up in Dockge (TrueNAS)
 
-1. On your Docker server, get this folder:
-   `git clone https://github.com/kreyastus/pokemon-drop-alerts-nz.git`
-   then `cd pokemon-drop-alerts-nz/docker`.
-2. Copy `.env.example` to `.env` (`cp .env.example .env`) and fill in the
-   same values the cPanel server uses (Discord webhook, WordPress address and
-   secret).
-3. Run `docker compose up -d --build`.
-4. Check it's working: `docker logs -f pokedrop-home`. Within a few minutes
-   you should see lines like `farmers: 13 products parsed from HTML` and
+1. In Dockge, choose **+ Compose** and name the stack `pokedrop`.
+2. Paste in the contents of `docker-compose.yml` from this folder.
+3. In the **.env** box, add the lines from `.env.example` with the same values
+   the cPanel server uses (Discord webhook, WordPress address and secret).
+4. Choose **Deploy**, then open the stack's log. Within a few minutes you
+   should see lines like `farmers: 13 products parsed from HTML` and
    `kmart: 46 products listed`.
 
-The container fetches the scanner code from GitHub when it starts and updates
-it about once an hour, so changes reach it without a rebuild.
+## Set up with plain Docker
+
+Put `docker-compose.yml` and a filled-in `.env` (copied from `.env.example`)
+in a folder on the server, then run `docker compose up -d` and
+`docker logs -f pokedrop-home`.
+
+There's nothing to build. A standard Python image downloads the scanner from
+GitHub when it starts and updates it about once an hour, so changes reach it
+without touching the server. (`Dockerfile` and `entrypoint.sh` are an older way
+of doing the same thing and aren't needed.)
 
 ## If a shop blocks it
 
