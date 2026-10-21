@@ -166,16 +166,17 @@ def check_details(store: dict, client: PoliteClient, products: list[Product]) ->
     never looks like a restock."""
     pattern = re.compile(store.get("detail_match", r"pok[eé]mon"), re.I)
     checked = []
-    for p in products:
-        if not pattern.search(p.title):
-            continue
+    wanted = [p for p in products if pattern.search(p.title)]
+    failures: list[str] = []
+    for p in wanted:
         try:
             page = client.get_text(p.url)
         except Exception as exc:  # noqa: BLE001
-            log.debug("%s: detail page failed for %s (%s)", store["id"], p.url, exc)
+            failures.append(f"{type(exc).__name__}: {exc}")
             continue
         found = parse_jsonld(store, page, p.url, single_product=True)
         if not found:
+            failures.append(f"no product data on page ({_describe(page)})")
             continue
         d = found[0]
         p.available = d.available
@@ -183,7 +184,17 @@ def check_details(store: dict, client: PoliteClient, products: list[Product]) ->
         if d.price is not None:
             p.price = d.price
         checked.append(p)
+    if failures:
+        log.warning("%s: %d of %d product pages unreadable, e.g. %s",
+                    store["id"], len(failures), len(wanted), failures[0][:200])
     return checked
+
+
+def _describe(html: str) -> str:
+    """Short summary of a page, to spot bot-check or error pages in the logs."""
+    m = re.search(r"<title[^>]*>(.*?)</title>", html or "", re.I | re.S)
+    title = re.sub(r"\s+", " ", m.group(1)).strip()[:80] if m else "no title"
+    return f"{len(html or '')} bytes, title '{title}'"
 
 
 # ---------------------------------------------------------------- fetching
@@ -223,6 +234,8 @@ def fetch(store: dict, client: PoliteClient) -> list[Product]:
         found = parse_jsonld(store, html, url)
         if not found or store.get("prefer_selectors"):
             found = parse_selectors(store, html, url) or found
+        if not found:
+            log.warning("%s: no products found on %s (%s)", store["id"], url, _describe(html))
         for p in found:
             seen[p.key] = p
     products = list(seen.values())
