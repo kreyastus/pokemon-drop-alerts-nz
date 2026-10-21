@@ -21,7 +21,16 @@ DEFAULT_EXCLUDE = [
     "plush", "figure", "figurine", "t-shirt", "tee", "hoodie", "lego",
     "nintendo switch", "video game", "lunch box", "backpack", "costume",
     "puzzle", "colouring", "coloring", "sticker book", "book", "cushion",
-    "mega construx", "funko",
+    "mega construx", "funko", "watch", "clock", "lamp", "mug", "drink bottle",
+    "keyring", "key chain", "pyjamas", "socks", "slippers", "wallet", "pencil case",
+]
+
+# Words that mean "this is a card product", which beat the exclude list:
+# "30th Celebration Figure Collection" is a TCG box, not a figure.
+TCG_WORDS = [
+    "tcg", "trading card", "booster", "elite trainer", "etb", "premium collection",
+    "figure collection", "special collection", "battle deck", "league battle", "tin",
+    "blister", "card game",
 ]
 
 PREORDER_PATTERNS = [
@@ -55,7 +64,8 @@ class ProductFilter:
         if not assume_pokemon and not any(k in haystack for k in self.include):
             return False
         title = _fold(p.title)
-        if any(re.search(rf"\b{re.escape(k)}\b", title) for k in self.exclude):
+        is_cards = any(re.search(rf"\b{re.escape(k)}\b", title) for k in TCG_WORDS)
+        if not is_cards and any(re.search(rf"\b{re.escape(k)}\b", title) for k in self.exclude):
             return False
         if p.price is not None:
             if self.min_price is not None and p.price < self.min_price:
