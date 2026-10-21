@@ -54,7 +54,8 @@ def parse_items(store: dict, payload: dict) -> list[Product]:
                 price=price,
                 compare_at_price=regular,
                 available=bool(in_stock),
-                preorder=looks_like_preorder(title, " ".join(tags), it.get("excerpt", "") or ""),
+                # Title and tags only: shop descriptions often mention pre-order policies.
+                preorder=looks_like_preorder(title, " ".join(tags)),
                 image=it.get("assetUrl"),
                 tags=tags,
             )
