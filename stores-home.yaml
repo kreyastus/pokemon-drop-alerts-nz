@@ -8,6 +8,9 @@
 # If a shop starts refusing these requests, its scans fail and the health
 # channel says so: switch that shop off (enabled: false) rather than working
 # round it.
+#
+# 22 October 2026: both shops turned away a home connection too (Farmers sent
+# its block page, Kmart a 403), so both are switched off.
 
 settings:
   source: home                 # names this scanner on the website, so scanners never overwrite each other
@@ -44,6 +47,7 @@ stores:
     name: Farmers
     url: https://www.farmers.co.nz
     adapter: html
+    enabled: false             # blocked from home too (22 October 2026)
     every_minutes: 20
     missing_means_sold_out: false
     pages: [/toys/games-cards-puzzles/trading-cards]
@@ -62,6 +66,7 @@ stores:
     name: Kmart NZ
     url: https://www.kmart.co.nz
     adapter: kmart
+    enabled: false             # blocked from home too (22 October 2026)
     every_minutes: 30
     detail_hours: 6
     max_details: 12
