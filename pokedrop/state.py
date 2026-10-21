@@ -115,7 +115,9 @@ class State:
                 if rec.get("store_id") == sid and key not in current_keys and rec.get("available"):
                     rec["available"] = False
 
-        store_state.update(seeded=True, last_ok=ts, product_count=len(products))
+        # Stay unseeded until a scan actually finds products, so a shop that was
+        # briefly unreadable doesn't flood the channel with "new" alerts later.
+        store_state.update(seeded=bool(products) or not seeding, last_ok=ts, product_count=len(products))
         if seeding:
             log.info("%s: first scan, recorded %d products silently", sid, len(products))
         return events
