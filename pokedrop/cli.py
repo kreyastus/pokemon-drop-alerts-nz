@@ -16,7 +16,7 @@ from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor
 
 from . import config as config_mod
-from .adapters import ADAPTERS
+from .adapters import ADAPTERS, BRANCH_LOOKUPS
 from . import release
 from .detect import detect
 from .filters import ProductFilter, RRPTable, clean_title, purchase_limit
@@ -47,6 +47,7 @@ def _filter_for(store: dict, settings: dict) -> ProductFilter:
         exclude=f.get("exclude"),
         min_price=f.get("min_price"),
         max_price=f.get("max_price"),
+        drop=f.get("drop"),
     )
 
 
@@ -110,6 +111,7 @@ def run_scan(cfg: dict, state_path: str, dry_run: bool = False) -> list[Event]:
                 release.enrich(store, products, state.data.setdefault("releases", {}), _client(settings))
             except Exception as exc:  # noqa: BLE001 - never let the calendar stop alerts
                 log.warning("%s: release dates skipped (%s)", sid, exc)
+        add_branches(store, products, state, settings)
         upcoming.extend(
             {
                 "store_id": sid, "store_name": store.get("name", sid), "title": p.title, "url": p.url,
@@ -162,13 +164,39 @@ def run_scan(cfg: dict, state_path: str, dry_run: bool = False) -> list[Event]:
     return all_events
 
 
+def add_branches(store: dict, products: list[Product], state: State, settings: dict) -> None:
+    """Stock at physical shops, for the region pages.
+
+    Chains with a branch stock lookup (Whitcoulls) are asked branch by branch.
+    A shop with one physical store (`location:` in its entry) sells from the
+    same shelves as its website, so its website stock stands in for the shop."""
+    lookup = BRANCH_LOOKUPS.get(store.get("adapter", ""))
+    if lookup and store.get("branch_zones"):
+        try:
+            lookup(store, products, _client(settings), state.data.setdefault("branches", {}),
+                   datetime.now(timezone.utc))
+        except Exception as exc:  # noqa: BLE001 - never let this stop alerts
+            log.warning("%s: branch stock skipped (%s)", store["id"], exc)
+    loc = store.get("location")
+    if loc and loc.get("name"):
+        for p in products:
+            p.branches = [{
+                "id": store["id"], "name": loc["name"], "region": loc.get("region"),
+                "address": loc.get("address"), "units": None, "in_stock": bool(p.available) and not p.preorder,
+                "message": None, "basis": "website",
+            }]
+
+
 def _catalogue_item(store: dict, p: Product) -> dict:
-    return {
+    item = {
         "store_id": store["id"], "store_name": store.get("name", store["id"]), "key": p.key,
         "title": p.title, "url": p.url, "image": p.image, "price": p.price,
         "compare_at_price": p.compare_at_price, "available": p.available, "preorder": p.preorder,
         "limit": p.limit, "rrp": p.rrp,
     }
+    if p.branches is not None:
+        item["branches"] = p.branches
+    return item
 
 
 def _catalogue_due(state: State, settings: dict) -> bool:
