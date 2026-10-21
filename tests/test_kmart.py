@@ -80,3 +80,16 @@ def test_run_scan_reuses_last_results_while_resting(tmp_path, monkeypatch):
     cli.run_scan(cfg, state)
     assert calls == ["slow"]                                  # second run rested
     assert sent["rows"][0]["store_id"] == "slow"             # but its status was reported again
+
+
+def test_blocked_listing_page_counts_as_failed_check():
+    import pytest
+    from pokedrop.adapters import html
+
+    class Blocked:
+        def get_text(self, url):
+            return "<html><title>Farmers</title><body>Farmers.co.nz is temporarily down</body></html>"
+
+    store = {"id": "farmers", "url": "https://www.farmers.co.nz", "pages": ["/toys"], "selectors": {"item": ".product-tile"}}
+    with pytest.raises(RuntimeError, match="no products found"):
+        html.fetch(store, Blocked())
