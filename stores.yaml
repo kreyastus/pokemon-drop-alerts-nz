@@ -68,8 +68,17 @@ stores:
     name: Otakumart
     url: https://otakumart.co.nz
     adapter: shopify
-    max_pages: 20              # whole-shop feed, filtered to Pokémon titles
-    # Tip: replace with `collections: [<handle>]` once you find their Pokémon collection URL
+    pokemon_only: true         # sealed Pokémon collections only (their full shop is 5,000+ items)
+    collections:
+      - pre-order-pokemon-tcg
+      - pokemon-tcg-booster-boxes
+      - pokemon-tcg-booster-packs
+      - pokemon-tcg-booster-cases
+      - pokemon-tcg-elite-trainer-boxes
+      - pokemon-tcg-collections
+      - pokemon-tcg-tins
+      - pokemon-tcg-decks
+      - japanese-pokemon-tcg
 
   - id: toyworld
     name: Toyworld
