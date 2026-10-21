@@ -13,6 +13,8 @@
 # Not sure which to use? Run:  python -m pokedrop detect https://shop.co.nz/pokemon-page
 
 settings:
+  source: github               # names this scanner on the website, so two scanners never overwrite each other
+  release_dates: true          # read release dates from pre-order pages (each checked at most once a day)
   price_drop_percent: 5        # alert when a price falls by at least this much
   cooldown_minutes: 60         # don't repeat the same alert for an item within this window
   min_delay_seconds: 2         # pause between requests to the same shop
@@ -69,6 +71,7 @@ stores:
     url: https://otakumart.co.nz
     adapter: shopify
     pokemon_only: true         # sealed Pokémon collections only (their full shop is 5,000+ items)
+    preorder_collections: [pre-order-pokemon-tcg]   # everything in here is a pre-order
     collections:
       - pre-order-pokemon-tcg
       - pokemon-tcg-booster-boxes
