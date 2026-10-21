@@ -1,11 +1,30 @@
-# PokéDrop NZ home scanner. Copy .env.example to .env, fill it in, then:
-#   docker compose up -d --build
+# PokéDrop NZ home scanner (Farmers and Kmart).
+#
+# Dockge (TrueNAS): + Compose, call the stack "pokedrop", paste this file in,
+# fill in the values in the .env box (see .env.example), then Deploy.
+# Plain Docker: put a .env file next to this one and run `docker compose up -d`.
+#
+# Nothing to build: a standard Python image downloads the scanner from GitHub
+# (docker/run.py) and keeps it up to date about once an hour.
 services:
   pokedrop:
-    build: .
+    image: python:3.12-slim
     container_name: pokedrop-home
     restart: unless-stopped
-    env_file: .env
+    working_dir: /app
+    environment:
+      TZ: Pacific/Auckland
+      PYTHONUNBUFFERED: "1"
+      SCAN_MINUTES: ${SCAN_MINUTES:-10}
+      DISCORD_WEBHOOK: ${DISCORD_WEBHOOK:-}
+      DISCORD_HEALTH_WEBHOOK: ${DISCORD_HEALTH_WEBHOOK:-}
+      DISCORD_ROLE_PREORDER: ${DISCORD_ROLE_PREORDER:-}
+      DISCORD_ROLE_RESTOCK: ${DISCORD_ROLE_RESTOCK:-}
+      WP_URL: ${WP_URL:-https://drops.elementaldigital.co.nz}
+      WP_SECRET: ${WP_SECRET:-}
     volumes:
-      - ./data:/app/data   # scan state, so restarts don't re-alert
-      - ./src:/app/src     # the scanner code, kept up to date from GitHub
+      - ./data:/app/data   # scan state, so a restart doesn't re-send alerts
+    command:
+      - python
+      - -c
+      - "import urllib.request as u; exec(u.urlopen('https://raw.githubusercontent.com/kreyastus/pokemon-drop-alerts-nz/main/docker/run.py', timeout=60).read())"
