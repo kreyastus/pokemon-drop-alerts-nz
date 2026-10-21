@@ -53,7 +53,11 @@ class ProductFilter:
         exclude: list[str] | None = None,
         min_price: float | None = None,
         max_price: float | None = None,
+        drop: list[str] | None = None,
     ):
+        # `drop` words always remove a product, even a card product
+        # (event tickets: "Pokémon TCG Prerelease Ticket").
+        self.drop = [_fold(k) for k in (drop or [])]
         self.include = [_fold(k) for k in (include or DEFAULT_INCLUDE)]
         self.exclude = [_fold(k) for k in (exclude if exclude is not None else DEFAULT_EXCLUDE)]
         self.min_price = min_price
@@ -64,6 +68,8 @@ class ProductFilter:
         if not assume_pokemon and not any(k in haystack for k in self.include):
             return False
         title = _fold(p.title)
+        if any(re.search(rf"\b{re.escape(k)}\b", title) for k in self.drop):
+            return False
         is_cards = any(re.search(rf"\b{re.escape(k)}\b", title) for k in TCG_WORDS)
         if not is_cards and any(re.search(rf"\b{re.escape(k)}\b", title) for k in self.exclude):
             return False
