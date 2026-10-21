@@ -154,6 +154,7 @@ stores:
     name: The Warehouse
     url: https://www.thewarehouse.co.nz
     adapter: html
+    render: true
     pokemon_only: true
     missing_means_sold_out: false
     pages: [/c/official-merchandise/pok%C3%A9mon/pokemon-trading-cards]
