@@ -65,3 +65,15 @@ class WordPressNotifier:
         if upcoming is not None:
             payload["upcoming"] = upcoming
         self._post(payload)
+
+    def send_catalogue(self, stores: list[str], items: list[dict], source: str = "default", chunk: int = 250) -> bool:
+        """Every product at the given retailers, for price history, best deals and
+        the retailer pages. Sent in parts so no single request is too big."""
+        parts = [items[i : i + chunk] for i in range(0, len(items), chunk)] or [[]]
+        ok = True
+        for n, part in enumerate(parts, 1):
+            r = self._post({"catalogue": {"stores": stores, "items": part, "part": n, "parts": len(parts)}, "source": source})
+            ok = ok and r is not None and r.ok
+        if ok:
+            log.info("Sent %d products to WordPress for price history", len(items))
+        return ok
