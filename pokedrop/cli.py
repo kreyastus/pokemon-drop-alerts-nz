@@ -91,6 +91,22 @@ def run_scan(cfg: dict, state_path: str, dry_run: bool = False) -> list[Event]:
     catalogue: list[dict] = []  # every product we can see, for price history and the retailer pages
     catalogue_stores: list[str] = []
 
+    # Shops with `every_minutes` are scanned less often; in between, their last
+    # results are reported again so the website and calendar keep showing them.
+    skipped = [s for s in stores if _resting(s, state)]
+    stores = [s for s in stores if s not in skipped]
+    for s in stores:
+        s["_cache"] = state.data.setdefault("pages", {}).setdefault(s["id"], {})
+    for s in skipped:
+        st = state.data["stores"].get(s["id"], {})
+        log.info("%s: resting (scanned at %s, every %s minutes)", s["id"], st.get("last_run"), s.get("every_minutes"))
+        if st.get("last_status"):
+            status_rows.append(st["last_status"])
+        upcoming.extend(st.get("last_upcoming") or [])
+        if st.get("last_items") is not None:
+            catalogue_stores.append(s["id"])
+            catalogue.extend(st["last_items"])
+
     # Different shops run in parallel; requests to the same shop stay sequential.
     with ThreadPoolExecutor(max_workers=int(settings.get("parallel_stores", 6))) as pool:
         results = list(pool.map(lambda s: fetch_store(s, settings), stores))
@@ -112,7 +128,7 @@ def run_scan(cfg: dict, state_path: str, dry_run: bool = False) -> list[Event]:
             except Exception as exc:  # noqa: BLE001 - never let the calendar stop alerts
                 log.warning("%s: release dates skipped (%s)", sid, exc)
         add_branches(store, products, state, settings)
-        upcoming.extend(
+        store_upcoming = [
             {
                 "store_id": sid, "store_name": store.get("name", sid), "title": p.title, "url": p.url,
                 "price": p.price, "available": p.available, "image": p.image, "limit": p.limit, "rrp": p.rrp,
@@ -120,7 +136,8 @@ def run_scan(cfg: dict, state_path: str, dry_run: bool = False) -> list[Event]:
                 "line": release.product_line(p.title),
             }
             for p in products if p.preorder
-        )
+        ]
+        upcoming.extend(store_upcoming)
         if st.get("failures", 0) >= int(settings.get("alert_after_failures", 6)):
             health.append(f"✅ **{store.get('name', sid)}** is scanning again.")
         st["failures"] = 0
@@ -138,11 +155,15 @@ def run_scan(cfg: dict, state_path: str, dry_run: bool = False) -> list[Event]:
         )
         log.info("%s: %d Pokémon products, %d new events", sid, len(products), len(events))
         all_events.extend(events)
-        status_rows.append({
+        row = {
             "store_id": sid, "store_name": store.get("name", sid), "ok": True,
             "checked_at": now_iso(), "products": len(products),
             "in_stock": sum(1 for p in products if p.available),
-        })
+        }
+        status_rows.append(row)
+        if store.get("every_minutes"):
+            st.update(last_run=row["checked_at"], last_status=row, last_upcoming=store_upcoming,
+                      last_items=[_catalogue_item(store, p) for p in products])
 
     # Most exciting first: pre-orders, then new, restock, price drops.
     order = {PREORDER: 0, "new": 1, "restock": 2, "price_drop": 3}
@@ -162,6 +183,19 @@ def run_scan(cfg: dict, state_path: str, dry_run: bool = False) -> list[Event]:
     state.prune(int(settings.get("forget_after_days", 45)))
     state.save()
     return all_events
+
+
+def _resting(store: dict, state: State) -> bool:
+    """True if a shop with `every_minutes` was scanned recently enough to skip this run."""
+    minutes = store.get("every_minutes")
+    last = state.data["stores"].get(store["id"], {}).get("last_run")
+    if not minutes or not last:
+        return False
+    try:
+        age = datetime.now(timezone.utc) - datetime.fromisoformat(last)
+    except ValueError:
+        return False
+    return age.total_seconds() < float(minutes) * 60 - 90
 
 
 def add_branches(store: dict, products: list[Product], state: State, settings: dict) -> None:
