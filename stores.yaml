@@ -125,10 +125,13 @@ stores:
   # page of Trading Cards (newest first), then opens each Pokémon product to
   # check stock. Farmers' robots.txt blocks its sorting and paging links, so
   # only the first 24 items are read, which is where new releases appear.
+  # Farmers shows automated requests a holding page, so it's opened in the
+  # headless browser like JB Hi-Fi.
   - id: farmers
     name: Farmers
     url: https://www.farmers.co.nz
     adapter: html
+    render: true
     missing_means_sold_out: false
     pages: [/toys/games-cards-puzzles/trading-cards]
     detail_pages: true
