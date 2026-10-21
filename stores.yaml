@@ -147,13 +147,23 @@ stores:
   # -------------------------------------------- big-box retailers (custom)
   # These sites are custom builds. Run `detect` on their Pokémon category page,
   # then set `enabled: true`. Some use bot protection and may need `render: true`.
+  # The Warehouse lists Pokémon cards on one category page. Each tile says
+  # whether it can be ordered online; "Find in-store" items count as sold out.
+  # Its robots.txt blocks site search, so the category page is used instead.
   - id: warehouse
     name: The Warehouse
     url: https://www.thewarehouse.co.nz
     adapter: html
-    enabled: false
+    pokemon_only: true
     missing_means_sold_out: false
-    pages: ["/search?q=pokemon+trading+cards"]   # check with `detect`
+    pages: [/c/official-merchandise/pok%C3%A9mon/pokemon-trading-cards]
+    selectors:
+      item: .product-tile
+      title: a.link
+      link: a.link
+      price: "[data-test-id=price]"
+      image: img.tile-image
+      in_stock: '.availability-stock-status[data-orderable="true"]'
 
   - id: mightyape
     name: Mighty Ape
