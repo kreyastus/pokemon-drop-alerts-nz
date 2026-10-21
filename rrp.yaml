@@ -1,0 +1,38 @@
+# Recommended retail prices (RRP) in NZ$, used to flag listings priced well
+# above RRP in alerts and on the website.
+#
+# How matching works: each rule's `match` words are looked for in the product
+# title (accents and capitals ignored). Rules are checked top to bottom and the
+# first match wins, so keep specific products above general ones.
+#
+# The prices below are the shelf prices JB Hi-Fi, Farmers and The Warehouse
+# charged in October 2026, which usually sit at RRP. Replace them with official
+# RRPs when you have them, and fill in the commented-out rules.
+
+flag_over_percent: 15     # flag a listing priced this much (or more) above RRP
+
+# Skipped entirely: imports and multi-box cases are priced differently.
+exclude: [japanese, chinese, korean, " case", "(case", "graded", "psa "]
+
+rules:
+  - match: ["league battle deck"]
+    rrp: 72.00
+  - match: ["mini portfolio"]
+    rrp: 14.00
+  - match: ["9-pocket portfolio", "9 pocket portfolio", "9pkt portfolio", "portfolio"]
+    rrp: 34.99
+  - match: ["mini tin"]
+    rrp: 24.99
+  - match: ["3-booster blister", "3 booster blister", "three booster blister"]
+    rrp: 31.99
+  - match: ["blister"]
+    rrp: 10.99
+  # Fill these in, then remove the # at the start of each line:
+  # - match: ["elite trainer box", "etb"]
+  #   rrp: 0.00
+  # - match: ["booster bundle"]
+  #   rrp: 0.00
+  # - match: ["booster box", "booster display"]
+  #   rrp: 0.00
+  # - match: ["booster pack", "sleeved booster"]
+  #   rrp: 0.00
