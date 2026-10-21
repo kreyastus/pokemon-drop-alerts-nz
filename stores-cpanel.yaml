@@ -1,0 +1,46 @@
+# PokéDrop NZ: shop list for the cPanel server.
+#
+# Only The Warehouse is scanned here, because it blocks GitHub's servers but
+# lets this host in. Every other shop is scanned by GitHub (stores.yaml), so
+# the two never send the same alert. Keep the webhook in a .env file next to
+# this one (DISCORD_WEBHOOK=...), never in this file.
+
+settings:
+  price_drop_percent: 5
+  cooldown_minutes: 60
+  min_delay_seconds: 2
+  respect_robots_txt: true
+  alert_after_failures: 6
+  forget_after_days: 45
+  parallel_stores: 1
+  filter:
+    include: [pokemon]
+    min_price: 4
+
+discord:
+  webhook: ${DISCORD_WEBHOOK}
+  health_webhook: ${DISCORD_HEALTH_WEBHOOK}
+  roles:
+    preorder: ${DISCORD_ROLE_PREORDER}
+    restock: ${DISCORD_ROLE_RESTOCK}
+  events: [preorder, new, restock, price_drop]
+  username: PokéDrop NZ
+
+stores:
+  # Each tile says whether it can be ordered online; "Find in-store" items
+  # count as sold out. robots.txt blocks site search, so the category page
+  # is used instead.
+  - id: warehouse
+    name: The Warehouse
+    url: https://www.thewarehouse.co.nz
+    adapter: html
+    pokemon_only: true
+    missing_means_sold_out: false
+    pages: [/c/official-merchandise/pok%C3%A9mon/pokemon-trading-cards]
+    selectors:
+      item: .product-tile
+      title: a.link
+      link: a.link
+      price: "[data-test-id=price]"
+      image: img.tile-image
+      in_stock: '.availability-stock-status[data-orderable="true"]'
