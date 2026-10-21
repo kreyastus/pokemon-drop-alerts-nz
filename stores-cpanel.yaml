@@ -62,3 +62,8 @@ stores:
     alert_from_start: true
     missing_means_sold_out: true
     pages: [/games-puzzles/games/collectible-cards]
+    # Stock at each branch, for the Canterbury page. Whitcoulls updates these
+    # figures once a day; each product is checked at most once an hour.
+    # Other regions: ZONE02 Auckland, ZONE09 Wellington, ZONE12 Otago ...
+    branch_zones:
+      ZONE11: Canterbury
