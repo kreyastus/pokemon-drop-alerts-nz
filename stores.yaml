@@ -195,6 +195,7 @@ stores:
     name: Whitcoulls
     url: https://www.whitcoulls.co.nz
     adapter: whitcoulls
+    enabled: false             # turns away GitHub's servers (406), so it runs from cPanel (stores-cpanel.yaml)
     alert_from_start: true
     missing_means_sold_out: true
     pages: [/games-puzzles/games/collectible-cards]
