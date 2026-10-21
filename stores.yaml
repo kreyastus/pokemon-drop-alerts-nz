@@ -188,5 +188,16 @@ stores:
     missing_means_sold_out: false
     pages: [CHANGE-ME]         # paste the URL of Toys > Pokemon Trading Cards
 
-  # Add more shops by copying an entry above. Ideas: Whitcoulls, Paper Plus,
+  # Whitcoulls has no Pokémon cards online yet, so this watches its trading
+  # card page and alerts the first ones it lists (alert_from_start). Products
+  # come from the data in the page; in-store-only stock counts as available.
+  - id: whitcoulls
+    name: Whitcoulls
+    url: https://www.whitcoulls.co.nz
+    adapter: whitcoulls
+    alert_from_start: true
+    missing_means_sold_out: true
+    pages: [/games-puzzles/games/collectible-cards]
+
+  # Add more shops by copying an entry above. Ideas: Paper Plus,
   # EB Games, Pokémon Center NZ (heavily bot-protected) and your local game stores.
