@@ -10,6 +10,7 @@ import time
 
 import requests
 
+from ..release import format_release
 from ..models import Event, EVENT_LABELS, PREORDER, NEW_LISTING, RESTOCK, PRICE_DROP
 
 log = logging.getLogger(__name__)
@@ -50,6 +51,9 @@ def build_embed(e: Event, flag_percent: float = 15) -> dict:
         fields.append({"name": name, "value": note, "inline": True})
     if p.limit:
         fields.append({"name": "Purchase limit", "value": f"{p.limit} per customer", "inline": True})
+    when = format_release(p.release_date, p.release_precision)
+    if when:
+        fields.append({"name": "Release date", "value": when, "inline": True})
     if e.type == PRICE_DROP and e.old_price:
         saved = e.old_price - (p.price or 0)
         fields.append({"name": "Was", "value": f"{_money(e.old_price)} (save {_money(saved)})", "inline": True})
