@@ -55,6 +55,11 @@ class WordPressNotifier:
             if r is not None and r.ok:
                 log.info("Sent %d drops to WordPress", len(chunk))
 
-    def send_status(self, stores: list[dict]):
-        """Optional heartbeat so the site can show 'last checked' per retailer."""
-        self._post({"status": stores})
+    def send_status(self, stores: list[dict], upcoming: list[dict] | None = None, source: str = "default"):
+        """Heartbeat for the site: when each retailer was last checked, plus every
+        pre-order currently listed (for the release calendar). `source` keeps
+        the GitHub and cPanel scanners from overwriting each other's lists."""
+        payload = {"status": stores, "source": source}
+        if upcoming is not None:
+            payload["upcoming"] = upcoming
+        self._post(payload)
