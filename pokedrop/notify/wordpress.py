@@ -37,6 +37,8 @@ class WordPressNotifier:
             "Content-Type": "application/json",
             "X-PokeDrop-Timestamp": ts,
             "X-PokeDrop-Signature": sign(self.secret, ts, body),
+            # Cloudflare turns away the default "python-requests" user agent.
+            "User-Agent": "PokeDropNZ/1.0 (+https://github.com/kreyastus/pokemon-drop-alerts-nz)",
         }
         r = requests.post(self.endpoint, data=body, headers=headers, timeout=30)
         not_api = r.status_code == 404 or "json" not in r.headers.get("Content-Type", "")
