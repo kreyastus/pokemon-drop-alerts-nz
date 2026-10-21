@@ -120,7 +120,10 @@ class State:
 
         # Stay unseeded until a scan actually finds products, so a shop that was
         # briefly unreadable doesn't flood the channel with "new" alerts later.
-        store_state.update(seeded=bool(products) or not seeding, last_ok=ts, product_count=len(products))
+        # alert_from_start: for shops that stock no Pokémon cards yet, so the first
+        # ones they list are alerted rather than recorded silently.
+        seeded = bool(products) or not seeding or bool(store.get("alert_from_start"))
+        store_state.update(seeded=seeded, last_ok=ts, product_count=len(products))
         if seeding:
             log.info("%s: first scan, recorded %d products silently", sid, len(products))
         return events
