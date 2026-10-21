@@ -12,6 +12,7 @@ import argparse
 import logging
 import sys
 import time
+from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor
 
 from . import config as config_mod
@@ -86,6 +87,8 @@ def run_scan(cfg: dict, state_path: str, dry_run: bool = False) -> list[Event]:
     health: list[str] = []
     status_rows = []
     upcoming: list[dict] = []   # every pre-order we can see, for the release calendar
+    catalogue: list[dict] = []  # every product we can see, for price history and the retailer pages
+    catalogue_stores: list[str] = []
 
     # Different shops run in parallel; requests to the same shop stay sequential.
     with ThreadPoolExecutor(max_workers=int(settings.get("parallel_stores", 6))) as pool:
@@ -120,6 +123,8 @@ def run_scan(cfg: dict, state_path: str, dry_run: bool = False) -> list[Event]:
             health.append(f"✅ **{store.get('name', sid)}** is scanning again.")
         st["failures"] = 0
         st.pop("last_error", None)
+        catalogue_stores.append(sid)
+        catalogue.extend(_catalogue_item(store, p) for p in products)
         events = state.diff(
             store,
             products,
@@ -147,13 +152,42 @@ def run_scan(cfg: dict, state_path: str, dry_run: bool = False) -> list[Event]:
             extra += f" RRP {e.product.rrp}" if e.product.rrp else ""
             print(f"[{e.type}] {e.store_name}: {e.product.title} ({e.product.price}){extra} {e.product.url}")
     else:
-        _deliver(cfg, all_events, health, status_rows, upcoming)
+        due = catalogue_stores and _catalogue_due(state, settings)
+        sent = _deliver(cfg, all_events, health, status_rows, upcoming,
+                        (catalogue_stores, catalogue) if due else None)
+        if sent:
+            state.data["catalogue_sent"] = now_iso()
     state.prune(int(settings.get("forget_after_days", 45)))
     state.save()
     return all_events
 
 
-def _deliver(cfg, events, health, status_rows, upcoming=None):
+def _catalogue_item(store: dict, p: Product) -> dict:
+    return {
+        "store_id": store["id"], "store_name": store.get("name", store["id"]), "key": p.key,
+        "title": p.title, "url": p.url, "image": p.image, "price": p.price,
+        "compare_at_price": p.compare_at_price, "available": p.available, "preorder": p.preorder,
+        "limit": p.limit, "rrp": p.rrp,
+    }
+
+
+def _catalogue_due(state: State, settings: dict) -> bool:
+    """The full product list goes to the website once an hour (catalogue_minutes),
+    which is plenty for price history and keeps each scan light."""
+    minutes = int(settings.get("catalogue_minutes", 60))
+    last = state.data.get("catalogue_sent")
+    if not last:
+        return True
+    try:
+        age = datetime.now(timezone.utc) - datetime.fromisoformat(last)
+    except ValueError:
+        return True
+    return age.total_seconds() >= minutes * 60 - 90  # a little slack for scans that run a few seconds early
+
+
+def _deliver(cfg, events, health, status_rows, upcoming=None, catalogue=None) -> bool:
+    """Sends alerts and the website reports. Returns True if the product list went out."""
+    sent = False
     dcfg = cfg.get("discord") or {}
     if dcfg.get("webhook") or dcfg.get("webhooks"):
         if events:
@@ -170,8 +204,11 @@ def _deliver(cfg, events, health, status_rows, upcoming=None):
                 wp.send(events)
             if wcfg.get("send_status", True):
                 wp.send_status(status_rows, upcoming or [], cfg["settings"].get("source", "default"))
+            if catalogue:
+                sent = wp.send_catalogue(catalogue[0], catalogue[1], cfg["settings"].get("source", "default"))
         except Exception as exc:  # noqa: BLE001
             log.error("WordPress delivery failed: %s", exc)
+    return sent
 
 
 # ------------------------------------------------------------------- commands
