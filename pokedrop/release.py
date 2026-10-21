@@ -85,6 +85,34 @@ def parse_release_date(text: str, today: date | None = None) -> tuple[str, str] 
     return None
 
 
+def released_long_ago(text: str, today: date | None = None, days: int = 60) -> bool:
+    """True when every release date on the page is long past, e.g. a 2019 box
+    that a shop still files under "Preorder Reservations". Those aren't
+    pre-orders, so they stay off the calendar and don't trigger pre-order alerts."""
+    today = today or datetime.now(timezone.utc).date()
+    text = re.sub(r"\s+", " ", text or "")
+    found = []
+
+    def add(y, m, d):
+        try:
+            found.append(date(y, m, d))
+        except ValueError:
+            pass
+
+    for m in _DAY_MON.finditer(text):
+        if m.group(3):  # only dates with a year count as evidence
+            mon = MONTHS[m.group(2)[:3].lower()]
+            add(_year(m.group(3), mon, int(m.group(1)), today), mon, int(m.group(1)))
+    for m in _MON_DAY.finditer(text):
+        add(int(m.group(3)), MONTHS[m.group(1)[:3].lower()], int(m.group(2)))
+    for m in _NUMERIC.finditer(text):
+        if 1 <= int(m.group(2)) <= 12:
+            add(_year(m.group(3), int(m.group(2)), int(m.group(1)), today), int(m.group(2)), int(m.group(1)))
+    for m in _MON_YEAR.finditer(text):
+        add(int(m.group(2)), MONTHS[m.group(1)[:3].lower()], 28)
+    return bool(found) and max(found) < today - timedelta(days=days)
+
+
 def page_text(html: str) -> str:
     soup = BeautifulSoup(html or "", "html.parser")
     for tag in soup(["script", "style", "noscript", "header", "footer", "nav"]):
@@ -146,9 +174,12 @@ def enrich(store: dict, products: list, cache: dict, client, now: datetime | Non
             continue
         rec = cache.get(p.key) or {}
         checked = rec.get("checked")
-        fresh = checked and now - datetime.fromisoformat(checked) < timedelta(hours=RECHECK_HOURS)
+        # Records saved before the "old" check existed are looked at again once.
+        fresh = checked and "old" in rec and now - datetime.fromisoformat(checked) < timedelta(hours=RECHECK_HOURS)
         if fresh:
             p.release_date, p.release_precision = rec.get("date"), rec.get("precision")
+            if rec.get("old"):
+                p.preorder = False
         else:
             due.append(p)
     if not due:
@@ -157,14 +188,20 @@ def enrich(store: dict, products: list, cache: dict, client, now: datetime | Non
     opened = 0
     try:
         for p in due:
+            old = False
             try:
-                found = parse_release_date(page_text(get(p.url)), now.date())
+                text = page_text(get(p.url))
+                found = parse_release_date(text, now.date())
+                old = not found and released_long_ago(text, now.date())
             except Exception as exc:  # noqa: BLE001 - try again tomorrow
                 log.debug("%s: release date lookup failed for %s (%s)", store["id"], p.url, exc)
                 found = None
             opened += 1
             p.release_date, p.release_precision = found if found else (None, None)
-            cache[p.key] = {"date": p.release_date, "precision": p.release_precision,
+            if old:
+                log.info("%s: %s came out long ago, so it isn't treated as a pre-order", store["id"], p.title)
+                p.preorder = False
+            cache[p.key] = {"date": p.release_date, "precision": p.release_precision, "old": old,
                             "checked": now.replace(microsecond=0).isoformat()}
     finally:
         if renderer:
