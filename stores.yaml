@@ -148,7 +148,7 @@ stores:
     name: Farmers
     url: https://www.farmers.co.nz
     adapter: html
-    enabled: false
+    enabled: false             # turns away GitHub and cPanel; scanned from home instead (stores-home.yaml)
     render: true
     missing_means_sold_out: false
     pages: [/toys/games-cards-puzzles/trading-cards]
@@ -196,11 +196,10 @@ stores:
   - id: kmart
     name: Kmart NZ
     url: https://www.kmart.co.nz
-    adapter: html
-    enabled: false
-    render: true
+    adapter: kmart
+    enabled: false             # turns away GitHub and cPanel; scanned from home instead (stores-home.yaml)
     missing_means_sold_out: false
-    pages: [CHANGE-ME]         # paste the URL of Toys > Pokemon Trading Cards
+    pages: [/category/toys/pokemon-trading-cards/]
 
   # Whitcoulls has no Pokémon cards online yet, so this watches its trading
   # card page and alerts the first ones it lists (alert_from_start). Products
