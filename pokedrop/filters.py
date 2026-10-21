@@ -63,3 +63,58 @@ class ProductFilter:
             if self.max_price is not None and p.price > self.max_price:
                 return False
         return True
+
+
+# ------------------------------------------------------------ purchase limits
+# Matches "LIMIT 10 PER CUSTOMER", "Limit 2 per person", "Max 2 per order",
+# "(Limit 1)", "limited to 4 per household".
+_LIMIT_RE = re.compile(
+    r"[\(\[\-–,]*\s*\b(?:limit(?:ed)?(?:\s+to)?|max(?:imum)?)\s*[:\-]?\s*(?:of\s*)?(\d{1,3})"
+    r"(?:\s*(?:per|each|/)\s*(?:customer|person|order|household|transaction))?\b\s*[\)\]]*",
+    re.I,
+)
+
+
+def purchase_limit(*texts: str) -> int | None:
+    for t in texts:
+        m = _LIMIT_RE.search(t or "")
+        if m:
+            return int(m.group(1))
+    return None
+
+
+def clean_title(title: str) -> str:
+    """Takes the purchase-limit wording out of a title, since it's shown as a badge."""
+    cleaned = _LIMIT_RE.sub(" ", title or "")
+    return re.sub(r"\s{2,}", " ", cleaned).strip(" -–,") or title
+
+
+# ------------------------------------------------------------------- RRP
+class RRPTable:
+    """Recommended retail prices by product type, from rrp.yaml.
+
+    Rules are checked in order and the first match wins, so list specific
+    products before general ones ("mini tin" before "tin")."""
+
+    def __init__(self, rules: list[dict] | None = None, exclude: list[str] | None = None):
+        self.rules = [
+            {**r, "_match": [_fold(m) for m in (r["match"] if isinstance(r["match"], list) else [r["match"]])]}
+            for r in (rules or [])
+            if r.get("match") and isinstance(r.get("rrp"), (int, float))
+        ]
+        self.exclude = [_fold(e) for e in (exclude or [])]
+
+    def lookup(self, title: str) -> float | None:
+        t = _fold(title)
+        if any(e in t for e in self.exclude):
+            return None
+        for r in self.rules:
+            if any(m in t for m in r["_match"]):
+                return float(r["rrp"])
+        return None
+
+
+def over_rrp_percent(price: float | None, rrp: float | None) -> float | None:
+    if price is None or not rrp:
+        return None
+    return round((price - rrp) / rrp * 100, 1)
