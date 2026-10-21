@@ -2,8 +2,9 @@ name: Scan for Pokémon drops
 
 on:
   schedule:
-    # Every 10 minutes. GitHub may run scheduled jobs a few minutes late at busy times.
-    - cron: "*/10 * * * *"
+    # Every 10 minutes, at 3, 13, 23... past the hour. Avoiding :00, :10 and so on
+    # dodges GitHub's busiest moments, when scheduled runs get delayed or dropped.
+    - cron: "3,13,23,33,43,53 * * * *"
   workflow_dispatch:      # adds a "Run workflow" button for manual scans
     inputs:
       test_alert:
