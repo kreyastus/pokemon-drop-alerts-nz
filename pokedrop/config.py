@@ -37,6 +37,12 @@ def load(path: str) -> dict:
         cfg = _expand(yaml.safe_load(fh) or {})
     cfg.setdefault("settings", {})
     cfg.setdefault("stores", [])
+    rrp_path = os.path.join(os.path.dirname(os.path.abspath(path)), cfg["settings"].get("rrp_file", "rrp.yaml"))
+    rrp = {}
+    if os.path.exists(rrp_path):
+        with open(rrp_path, encoding="utf-8") as fh:
+            rrp = yaml.safe_load(fh) or {}
+    cfg["rrp"] = rrp
     ids = [s["id"] for s in cfg["stores"]]
     dupes = {i for i in ids if ids.count(i) > 1}
     if dupes:
