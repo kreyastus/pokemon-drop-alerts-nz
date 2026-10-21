@@ -114,3 +114,85 @@ def fetch(store: dict, client: PoliteClient) -> list[Product]:
                 break
     log.info("%s: %d products read from page data", store["id"], len(products))
     return products
+
+
+# ------------------------------------------------------------ branch stock
+# The "Check store stock" button on each product page posts the product's style
+# number and a region to this address. Whitcoulls updates the figures once a
+# day (about 8 am), so each product is looked up at most once an hour.
+STOCK_API = "/api/product/checkstorestock"
+
+
+def _branch(row: dict, region: str) -> dict | None:
+    name = (row.get("SITE_NAME") or row.get("name") or "").strip()
+    if not name:
+        return None
+    units = _float(row.get("UNRESTRICTED")) or 0.0
+    on_order = _float(row.get("ON_ORDER")) or 0.0
+    return {
+        "id": str(row.get("SITE") or row.get("storeid") or name),
+        "name": name,
+        "region": region,
+        "units": int(units),
+        "in_stock": units > 0,
+        "message": (row.get("SOH_MESSAGE") or "").strip() or None,
+        "on_order": int(on_order) if on_order else None,
+        "basis": "branch",
+    }
+
+
+def branch_stock(store: dict, products: list[Product], client: PoliteClient, cache: dict, now) -> int:
+    """Fills p.branches for each product with stock at every branch in the
+    regions listed under `branch_zones` (e.g. {ZONE11: Canterbury}).
+    Returns how many lookups were made this run."""
+    from datetime import datetime, timedelta
+
+    zones = store.get("branch_zones") or {}
+    if not zones:
+        return 0
+    minutes = int(store.get("branch_minutes", 60))
+    budget = int(store.get("max_branch_lookups", 80))
+    url = store["url"].rstrip("/") + STOCK_API
+    headers = {"X-Requested-With": "XMLHttpRequest", "Accept": "application/json",
+               "Referer": store["url"].rstrip("/") + "/"}
+    made = 0
+    for p in products:
+        branches: list[dict] = []
+        known = False
+        for zone, region in zones.items():
+            ck = f"{p.key}|{zone}"
+            rec = cache.get(ck)
+            fresh = False
+            if rec:
+                try:
+                    fresh = now - datetime.fromisoformat(rec["checked"]) < timedelta(minutes=minutes - 2)
+                except (KeyError, ValueError):
+                    fresh = False
+            if not fresh and made < budget:
+                made += 1
+                try:
+                    r = client.post_form(url, {"barcode": p.product_id, "zone": zone}, headers)
+                    r.raise_for_status()
+                    body = r.json()
+                    rows = body.get("data") if isinstance(body, dict) and body.get("status") else []
+                    rec = {"checked": now.replace(microsecond=0).isoformat(),
+                           "branches": [b for b in (_branch(x, region) for x in rows or []) if b]}
+                    cache[ck] = rec
+                except Exception as exc:  # noqa: BLE001 - keep the last answer we had
+                    log.debug("%s: branch stock for %s in %s failed (%s)", store["id"], p.title, region, exc)
+            if rec and "branches" in rec:
+                known = True
+                branches.extend(rec["branches"])
+        if known:
+            p.branches = branches
+    # forget lookups older than two days (products that have gone)
+    cutoff = now - timedelta(days=2)
+    for ck in [k for k, v in cache.items() if k.startswith(store["id"] + ":")]:
+        try:
+            if datetime.fromisoformat(cache[ck]["checked"]) < cutoff:
+                del cache[ck]
+        except (KeyError, ValueError):
+            del cache[ck]
+    if made:
+        log.info("%s: checked branch stock %d times", store["id"], made)
+    return made
