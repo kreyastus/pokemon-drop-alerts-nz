@@ -29,7 +29,13 @@ DEFAULT_EXCLUDE = [
     "battle figure", "surprise attack", "guess who", "monopoly", "board game",
     "jigsaw", "bag charm", "keychain", "night light", "torch", "bubble",
     "water bottle", "action figure", "blaster", "kendama", "yo-yo", "plush toy",
+    "key ring", "key rings", "keyrings", "key chains", "keychains",
 ]
+
+# Always removed, even when the title also has card words: graded cards
+# ("Charizard ex Special Illustration Rare - PSA 10") are one-off collectables,
+# not stock drops.
+DEFAULT_DROP = ["psa", "cgc", "bgs", "beckett", "graded", "slab", "slabbed"]
 
 # Words that mean "this is a card product", which beat the exclude list:
 # "30th Celebration Figure Collection" is a TCG box, not a figure.
@@ -62,8 +68,9 @@ class ProductFilter:
         drop: list[str] | None = None,
     ):
         # `drop` words always remove a product, even a card product
-        # (event tickets: "Pokémon TCG Prerelease Ticket").
-        self.drop = [_fold(k) for k in (drop or [])]
+        # (event tickets: "Pokémon TCG Prerelease Ticket"). DEFAULT_DROP is
+        # always included.
+        self.drop = [_fold(k) for k in [*DEFAULT_DROP, *(drop or [])]]
         self.include = [_fold(k) for k in (include or DEFAULT_INCLUDE)]
         self.exclude = [_fold(k) for k in (exclude if exclude is not None else DEFAULT_EXCLUDE)]
         self.min_price = min_price
