@@ -136,7 +136,10 @@ def parse_selectors(store: dict, html: str, page_url: str) -> list[Product]:
             available = any(w.lower() in btn_text for w in sel["available_text"])
         else:
             available = not any(w in text for w in sold_out_words)
-        image = (img_el.get("src") or img_el.get("data-src")) if img_el else None
+        # Lazy-loaded images keep the real picture in data-src; src may be a placeholder.
+        image = (img_el.get("data-src") or img_el.get("src")) if img_el else None
+        if image and image.startswith("data:"):
+            image = None
         p = Product(
             store_id=store["id"],
             product_id=_stable_id(href),
