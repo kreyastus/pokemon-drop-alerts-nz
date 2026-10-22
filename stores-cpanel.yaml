@@ -22,6 +22,7 @@ settings:
 discord:
   webhook: ${DISCORD_WEBHOOK}
   health_webhook: ${DISCORD_HEALTH_WEBHOOK}
+  english_webhook: ${DISCORD_ENGLISH_WEBHOOK}   # optional: English prints only
   roles:
     preorder: ${DISCORD_ROLE_PREORDER}
     restock: ${DISCORD_ROLE_RESTOCK}
