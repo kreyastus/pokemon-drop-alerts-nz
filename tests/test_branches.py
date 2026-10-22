@@ -112,3 +112,19 @@ def test_pokemon_toys_are_left_out_but_tins_stay():
     cards = ["Pokemon TCG Poke Ball Tin Series 9", "Pokemon TCG 30th Celebration Figure Collection"]
     assert not any(pf.matches(Product("t", "1", t, "u", 30.0, True)) for t in toys)
     assert all(pf.matches(Product("t", "1", t, "u", 30.0, True)) for t in cards)
+
+
+def test_key_rings_and_graded_cards_removed():
+    from pokedrop.filters import ProductFilter
+    from pokedrop.models import Product
+
+    f = ProductFilter()
+    def ok(title):
+        return f.matches(Product("s", "1", title, "https://x/1", 20.0, True))
+    assert not ok("Pokemon Key Rings")
+    assert not ok("Pokemon Pikachu Key Ring")
+    assert not ok("2023 POKEMON MEW EN-151 #199 CHARIZARD ex SPECIAL ILLUSTRATION RARE - PSA 10")
+    assert not ok("2025 Pokemon Japanese M2A-Mega Dream Ex #226 Mega Gardevoir Ex Mega Attack Rare PSA 10")
+    assert not ok("Pokemon TCG Umbreon VMAX CGC 9.5")
+    assert ok("Pokemon TCG Ascended Heroes Elite Trainer Box")
+    assert ok("Pokemon TCG Poke Ball Tin")
