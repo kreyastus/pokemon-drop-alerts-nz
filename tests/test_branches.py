@@ -102,3 +102,13 @@ def test_drop_words_beat_card_words():
     assert not pf.matches(Product("cmchch", "1", "Pokemon TCG Prerelease Ticket - Saturday", "u", 30.0, True))
     assert pf.matches(Product("cmchch", "2", "Pokemon TCG Mega Evolution Booster Box", "u", 250.0, True))
     assert not pf.matches(Product("cmchch", "3", "Pokemon plush Pikachu", "u", 30.0, True))  # built-in list still applies
+
+
+def test_pokemon_toys_are_left_out_but_tins_stay():
+    from pokedrop.filters import ProductFilter
+    pf = ProductFilter(include=["pokemon"], min_price=4)
+    toys = ["Pokemon Clip N Go Ball, Assorted", "Guess Who Pokemon Edition", "Nanoblock Pokemon - Gengar",
+            "Pokemon Select 3 Inch Battle Figure Gengar", "POKEMON - MODEL KIT QUICK!! 28 MEOWTH"]
+    cards = ["Pokemon TCG Poke Ball Tin Series 9", "Pokemon TCG 30th Celebration Figure Collection"]
+    assert not any(pf.matches(Product("t", "1", t, "u", 30.0, True)) for t in toys)
+    assert all(pf.matches(Product("t", "1", t, "u", 30.0, True)) for t in cards)
