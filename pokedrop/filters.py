@@ -23,6 +23,12 @@ DEFAULT_EXCLUDE = [
     "puzzle", "colouring", "coloring", "sticker book", "book", "cushion",
     "mega construx", "funko", "watch", "clock", "lamp", "mug", "drink bottle",
     "keyring", "key chain", "pyjamas", "socks", "slippers", "wallet", "pencil case",
+    # toys and games
+    "toy", "toys", "figures", "plushie", "plushies", "squishmallow", "squishmallows",
+    "clip n go", "clip 'n' go", "poke ball", "pokeball", "nanoblock", "model kit",
+    "battle figure", "surprise attack", "guess who", "monopoly", "board game",
+    "jigsaw", "bag charm", "keychain", "night light", "torch", "bubble",
+    "water bottle", "action figure", "blaster", "kendama", "yo-yo", "plush toy",
 ]
 
 # Words that mean "this is a card product", which beat the exclude list:
