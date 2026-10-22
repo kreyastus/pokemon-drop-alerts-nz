@@ -177,12 +177,6 @@ stores:
     adapter: shopify
     collections: [chinese-tcg, japanese-tcg]
 
-  - id: metalife
-    name: MetaLife
-    url: https://www.metalife.co.nz
-    adapter: shopify
-    collections: [pokemon]
-
   - id: mrtofu
     name: Mr Tofu
     url: https://mrtofu.store
@@ -226,6 +220,8 @@ stores:
     url: https://www.toytime.co.nz
     adapter: shopify
     collections: [pokemon-tcg, pokemon-chinese, pokemon-japanese]
+    filter:
+      drop: [ticket, tickets]   # event tickets share the collection
     # Christchurch shop, so it shows on the Canterbury page. Its online stock may
     # include its Lincoln warehouse, so the page labels it as website stock.
     location:
