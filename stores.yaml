@@ -279,6 +279,7 @@ stores:
     adapter: html
     render: true
     pokemon_only: true
+    missing_means_sold_out: true   # the page lists every Pokémon product, so one that disappears has gone
     pages: [/collections/collectibles-merchandise/pokemon-trading-cards]
     selectors:
       item: .ProductCard
