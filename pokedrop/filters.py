@@ -58,6 +58,27 @@ def looks_like_preorder(*texts: str) -> bool:
     return any(_PREORDER_RE.search(t or "") for t in texts)
 
 
+# Signs that a product isn't an English-language print. Used for the optional
+# English-only Discord channel; anything not marked otherwise counts as English.
+NON_ENGLISH_WORDS = [
+    "japanese", "japan", "jp", "jpn", "chinese", "simplified chinese", "traditional chinese",
+    "s-chinese", "t-chinese", "chn", "cn", "korean", "korea", "kr", "kor", "thai",
+    "indonesian", "indonesia", "german", "deutsch", "french", "francais", "italian",
+    "italiano", "spanish", "espanol", "portuguese", "gem pack", "gem vol", "high class pack",
+]
+# Japanese-only set codes: s4a, s8a, sv2a, sv8a, m2a, sm12a.
+_JP_SET_CODES = r"s\d{1,2}a|sv\d{1,2}a|sm\d{1,2}a|m\d{1,2}a"
+_NON_ENGLISH_RE = re.compile(r"\b(?:" + "|".join(re.escape(w) for w in NON_ENGLISH_WORDS) + "|" + _JP_SET_CODES + r")\b")
+_CJK_RE = re.compile(r"[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af\u0e00-\u0e7f]")
+
+
+def looks_english(p: Product) -> bool:
+    """False when the title or tags say the product is Japanese, Chinese, Korean
+    and so on ("Pokemon Japanese Mega Dream ex Booster Box", "[CN] Gem Pack")."""
+    text = " ".join([p.title or "", *(p.tags or [])])
+    return not (_CJK_RE.search(text) or _NON_ENGLISH_RE.search(_fold(text)))
+
+
 class ProductFilter:
     def __init__(
         self,
