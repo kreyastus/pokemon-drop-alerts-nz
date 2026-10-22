@@ -10,6 +10,7 @@ import time
 
 import requests
 
+from ..filters import looks_english
 from ..release import format_release
 from ..models import Event, EVENT_LABELS, PREORDER, NEW_LISTING, RESTOCK, PRICE_DROP
 
@@ -83,11 +84,13 @@ class DiscordNotifier:
           "roles": {"preorder": "123456789012345678"},        # optional role pings
           "store_roles": {"jbhifi": "2345..."},               # optional per store
           "events": ["preorder", "new", "restock", "price_drop"],
+          "english_webhook": "https://...",                   # optional: English prints only
           "username": "PokéDrop NZ"
         }
         """
         self.default = config.get("webhook")
         self.by_type = config.get("webhooks") or {}
+        self.english = config.get("english_webhook")
         self.roles = config.get("roles") or {}
         self.store_roles = config.get("store_roles") or {}
         self.enabled_events = set(config.get("events") or [PREORDER, NEW_LISTING, RESTOCK, PRICE_DROP])
@@ -114,15 +117,20 @@ class DiscordNotifier:
             if e.type not in self.enabled_events:
                 continue
             url = self.by_type.get(e.type) or self.default
-            if not url:
-                continue
-            groups.setdefault((url, e.type), []).append(e)
+            if url:
+                groups.setdefault((url, e.type), []).append(e)
+            # A copy goes to the English-only channel, without role pings, so
+            # people who follow both aren't pinged twice.
+            if self.english and looks_english(e.product):
+                groups.setdefault((self.english, e.type), []).append(e)
 
         for (url, etype), evs in groups.items():
             for i in range(0, len(evs), 10):
                 chunk = evs[i : i + 10]
                 role_ids = {self.roles[etype]} if self.roles.get(etype) else set()
                 role_ids |= {self.store_roles[e.product.store_id] for e in chunk if e.product.store_id in self.store_roles}
+                if url == self.english:
+                    role_ids = set()
                 mentions = " ".join(f"<@&{r}>" for r in sorted(role_ids))
                 payload = {
                     "username": self.username,
