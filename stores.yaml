@@ -36,6 +36,7 @@ discord:
     preorder: ${DISCORD_ROLE_PREORDER}
     restock: ${DISCORD_ROLE_RESTOCK}
   events: [preorder, new, restock, price_drop]
+  english_webhook: ${DISCORD_ENGLISH_WEBHOOK}  # optional: a copy of every English-print alert, without pings
   username: PokéDrop NZ
 
 wordpress:
