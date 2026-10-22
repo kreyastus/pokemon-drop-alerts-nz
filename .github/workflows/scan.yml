@@ -34,7 +34,13 @@ jobs:
       - run: pip install -r requirements.txt
 
       # Headless browser for stores with `render: true` (JB Hi-Fi). Remove if you drop those.
-      - run: pip install playwright && python -m playwright install --with-deps chromium
+      # The install sometimes fails on a busy package mirror; it's tried twice, and if
+      # it still fails the scan goes ahead anyway (only JB Hi-Fi misses that round).
+      - name: Install headless browser
+        continue-on-error: true
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium || { sleep 20; python -m playwright install --with-deps chromium; }
 
       - name: Scan
         env:
