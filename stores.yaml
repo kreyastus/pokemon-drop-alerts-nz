@@ -229,6 +229,15 @@ stores:
       address: Shop 9, The Colombo, 363 Colombo Street, Sydenham, Christchurch
       region: Canterbury
 
+  # Hobby Lords isn't on Shopify, so this reads the product data in the page
+  # itself (schema.org), from its trading card games category page.
+  - id: hobbylords
+    name: Hobby Lords
+    url: https://hobbylords.com
+    adapter: html
+    missing_means_sold_out: false
+    pages: ["/nz/shop/category/1/trading-card-games?pc_level_1=92&pc_level_2=120&p=1"]
+
   - id: toyworld
     name: Toyworld
     url: https://www.toyworld.co.nz
