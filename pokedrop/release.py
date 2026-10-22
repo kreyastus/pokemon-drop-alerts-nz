@@ -122,22 +122,46 @@ def page_text(html: str) -> str:
 
 
 # Product line for grouping the calendar: "Delta Reign Elite Trainer Box |
-# Pokemon TCG" and "Delta Reign Booster Bundle" both belong to "Delta Reign".
-_NOISE = re.compile(r"\|\s*pok[eé]mon(?:\s+tcg)?\s*$|^(?:pre[\s\-]?order\s*[:\-–]?\s*)?pok[eé]mon(?:\s+(?:tcg|trading card game|trading card))?\s*[:\-–]?\s*|^pre[\s\-]?order\s*[:\-–]?\s*", re.I)
-_TYPES = re.compile(
-    r"\s*[\-–—:,]?\s*\b(elite trainer box|etb|booster bundle|booster box|booster display|booster pack|"
-    r"sleeved booster|\d-booster blister|3 booster blister|blisters?|premium collection|ultra-premium collection|"
-    r"special collection|collection box|figure collection|mini tins?|tins?|league battle deck|battle deck|"
-    r"build & battle|portfolio|binder|deck)\b.*$",
+# Pokemon TCG", "(Pre-order) Pokémon TCG: Mega Evolution - Delta Reign Booster
+# Box" and "Pokemon TCG ME06 Delta Reign Booster Bundle" all belong to "Delta Reign".
+_SHOP_NOISE = re.compile(
+    r"\([^)]*\)|\[[^\]]*\]|\*[^*]*\*"                          # (Pre-Order), [2nd Wave], *Simplified Chinese*
+    r"|\bpre[\s\-]?orders?\b|\bback[\s\-]?orders?\b|\bbatch\s*\d+"
+    r"|\bin[\s\-]?store pick[\s\-]?up only\b|\bpick[\s\-]?up only\b"
+    r"|\bearly\s+\w+\s+\d{4}\s*:?|,?\s*ship(?:s|ping)? on\b.*$|\blimit \d+ per \w+"
+    r"|pok[eé]mon\b|\btrading card game\b|\btrading cards?\b|\btcg\b",
     re.I,
 )
+# Series names and set codes that some shops put in front of the set name.
+_SERIES = re.compile(
+    r"\b(?:mega evolutions?|scarlet\s*(?:&|and)\s*violet|sword\s*(?:&|and)\s*shield|sun\s*(?:&|and)\s*moon)"
+    r"(?:\s*\d{1,2}(?:\.\d)?\b)?\s*[\-–—:]*\s*(?=\S)"
+    r"|\b(?:me|sv|swsh|sm)\s?\d{1,2}(?:\.\d)?[a-z]?\b",
+    re.I,
+)
+_TYPES = re.compile(
+    r"\s*[\-–—:,|]?\s*\b(elite trainer box|etb|booster bundle|booster box|booster display|booster packs?|"
+    r"sleeved booster|(?:three|\d)\s*-?\s*booster(?: blister)?|blisters?|checklane|"
+    r"super-premium collection|ultra-premium collection|premium collection|special collection|collection box|"
+    r"collection bundle|poster (?:collection|box)|(?:deluxe )?pin collection|illustration collection|figure collection|"
+    r"tech sticker|accessory pouch|surprise box|binder (?:box|collection)|mega ex box|ex box|"
+    r"mini tins?|tins?|league battle deck|battle deck|build & battle|portfolio|binder|deck|"
+    r"single packs?|(?<![\d\-])packs?)\b.*$",
+    re.I,
+)
+_EDGES = " -–—:,|&"
 
 
 def product_line(title: str) -> str:
-    t = _NOISE.sub("", (title or "").strip())
-    t = _NOISE.sub("", t).strip()
-    line = _TYPES.sub("", t).strip(" -–—:,")
-    return line or t
+    def tidy(x):
+        return re.sub(r"\s+", " ", x).strip(_EDGES + " ")
+
+    t = tidy(_SHOP_NOISE.sub(" ", title or ""))
+    line = tidy(_TYPES.sub("", tidy(_SERIES.sub(" ", t))))
+    if not line:
+        # The set itself is a series name ("Mega Evolution Booster Bundle").
+        line = tidy(_TYPES.sub("", t))
+    return line or t or (title or "").strip()
 
 
 # ------------------------------------------------------------------ enrich
