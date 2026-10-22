@@ -235,6 +235,7 @@ stores:
     name: Hobby Lords
     url: https://hobbylords.com
     adapter: html
+    enabled: false             # the page has no schema.org product data; needs selectors for its product tiles
     missing_means_sold_out: false
     pages: ["/nz/shop/category/2/pokemon?pc_level_1=&pc_level_2=120"]
 
