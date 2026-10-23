@@ -1,5 +1,5 @@
 """English-only Discord channel."""
-from pokedrop.filters import looks_english
+from pokedrop.filters import language, looks_english
 from pokedrop.models import Event, Product
 from pokedrop.notify import discord as d
 
@@ -46,3 +46,31 @@ def test_no_english_channel_by_default(monkeypatch):
     d.DiscordNotifier({"webhook": "MAIN", "english_webhook": ""}).send(
         [Event("new", prod("Pokemon TCG Booster Box"), "Shop", None, "t")])
     assert sent == ["MAIN"]
+
+
+def test_language():
+    assert language(prod("Pokemon TCG Ascended Heroes Elite Trainer Box")) == "english"
+    assert language(prod("Pokemon Japanese Mega Dream ex Booster Box")) == "japanese"
+    assert language(prod("[JP] Nullifying Zero Booster Box")) == "japanese"
+    assert language(prod("s4a High Class Pack Shiny Star V Booster Box")) == "japanese"
+    assert language(prod("ポケモンカード 拡張パック")) == "japanese"
+    assert language(prod("Pokemon Gem Vol 5 Booster Pack")) == "chinese"
+    assert language(prod("Pokémon TCG GEM Pack VOL 6 Booster Box (Simplified Chinese)")) == "chinese"
+    assert language(prod("Pokemon TCG S-Chinese Collect 151 Gather ex Coin Booster Collection Set")) == "chinese"
+    assert language(prod("宝可梦 集换式卡牌")) == "chinese"
+    assert language(prod("Pokemon Korean Terastal Festival Box")) == "other"
+    assert language(prod("Mega Dream ex Booster Box", tags=["Japanese"])) == "japanese"
+
+
+def test_language_channels(monkeypatch):
+    sent = []
+    monkeypatch.setattr(d.DiscordNotifier, "_post", lambda self, url, payload: sent.append((url, len(payload["embeds"]), payload["content"])))
+    monkeypatch.setattr(d.time, "sleep", lambda s: None)
+    n = d.DiscordNotifier({"webhook": "MAIN", "english_webhook": "EN", "japanese_webhook": "JP",
+                           "chinese_webhook": "CN", "roles": {"new": "9"}})
+    n.send([Event("new", prod(t), "Shop", None, "t") for t in [
+        "Pokemon TCG Booster Box", "Pokemon Japanese Booster Box", "Pokemon Gem Vol 5 Booster Box",
+        "Pokemon Korean Booster Box"]])
+    got = {u: (k, c) for u, k, c in sent}
+    assert got["MAIN"] == (4, "<@&9>")
+    assert got["EN"] == (1, None) and got["JP"] == (1, None) and got["CN"] == (1, None)
