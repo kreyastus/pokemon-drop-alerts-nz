@@ -34,10 +34,13 @@ jobs:
       - run: pip install -r requirements.txt
 
       # Headless browser for stores with `render: true` (JB Hi-Fi). Remove if you drop those.
-      # The install sometimes fails on a busy package mirror; it's tried twice, and if
-      # it still fails the scan goes ahead anyway (only JB Hi-Fi misses that round).
+      # The install sometimes fails or stalls on a busy package mirror; it's tried twice,
+      # given at most 3 minutes, and if it still fails the scan goes ahead anyway (only
+      # JB Hi-Fi misses that round). Test alerts don't need it, so they skip it.
       - name: Install headless browser
+        if: ${{ inputs.test_alert != true }}
         continue-on-error: true
+        timeout-minutes: 3
         run: |
           pip install playwright
           python -m playwright install --with-deps chromium || { sleep 20; python -m playwright install --with-deps chromium; }
