@@ -316,14 +316,22 @@ def cmd_list(args):
 
 def cmd_test_discord(args):
     cfg = config_mod.load(args.config)
-    sample = Product(
-        store_id="test", product_id="1", title="Test alert: Pokémon TCG Elite Trainer Box",
-        url="https://example.com", price=89.99, available=True, preorder=True,
-    )
-    sample.limit = 2
-    sample.rrp = 89.99
-    DiscordNotifier(cfg.get("discord") or {}).send([Event(PREORDER, sample, "PokéDrop test", None, now_iso())])
-    print("Sent. Check your Discord channel.")
+    # One sample per language, so the English, Japanese and Chinese channels
+    # each get one and the main channel gets all three.
+    titles = [
+        ("1", "Test alert: Pokémon TCG Elite Trainer Box", 89.99),
+        ("2", "Test alert: Pokémon TCG Japanese Booster Box", 120.00),
+        ("3", "Test alert: Pokémon TCG Gem Pack Booster Box (Simplified Chinese)", 140.00),
+    ]
+    events = []
+    for pid, title, price in titles:
+        sample = Product(store_id="test", product_id=pid, title=title,
+                         url=f"https://example.com/{pid}", price=price, available=True, preorder=True)
+        sample.limit = 2
+        sample.rrp = price
+        events.append(Event(PREORDER, sample, "PokéDrop test", None, now_iso()))
+    DiscordNotifier(cfg.get("discord") or {}).send(events)
+    print("Sent. Check your Discord channels.")
 
 
 def main(argv=None):
