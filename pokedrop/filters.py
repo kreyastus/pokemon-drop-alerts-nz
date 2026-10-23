@@ -72,11 +72,34 @@ _NON_ENGLISH_RE = re.compile(r"\b(?:" + "|".join(re.escape(w) for w in NON_ENGLI
 _CJK_RE = re.compile(r"[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af\u0e00-\u0e7f]")
 
 
+_CHINESE_RE = re.compile(r"\b(?:chinese|simplified chinese|traditional chinese|s-chinese|t-chinese|chn|cn|gem pack|gem vol)\b")
+_JAPANESE_RE = re.compile(r"\b(?:japanese|japan|jp|jpn|high class pack|" + _JP_SET_CODES + r")\b")
+_KANA_RE = re.compile(r"[\u3040-\u30ff]")      # hiragana and katakana: only Japanese uses these
+_HAN_RE = re.compile(r"[\u3400-\u9fff]")       # Chinese characters, also used in Japanese
+
+
+def language(p: Product) -> str:
+    """'english', 'japanese', 'chinese' or 'other' (Korean, Thai, European prints).
+
+    Chinese wording wins over Japanese, so "Gem Pack Vol 5 (Simplified Chinese)"
+    is Chinese. Chinese characters with no kana count as Chinese."""
+    text = " ".join([p.title or "", *(p.tags or [])])
+    folded = _fold(text)
+    if _CHINESE_RE.search(folded):
+        return "chinese"
+    if _JAPANESE_RE.search(folded) or _KANA_RE.search(text):
+        return "japanese"
+    if _HAN_RE.search(text):
+        return "chinese"
+    if _CJK_RE.search(text) or _NON_ENGLISH_RE.search(folded):
+        return "other"
+    return "english"
+
+
 def looks_english(p: Product) -> bool:
     """False when the title or tags say the product is Japanese, Chinese, Korean
     and so on ("Pokemon Japanese Mega Dream ex Booster Box", "[CN] Gem Pack")."""
-    text = " ".join([p.title or "", *(p.tags or [])])
-    return not (_CJK_RE.search(text) or _NON_ENGLISH_RE.search(_fold(text)))
+    return language(p) == "english"
 
 
 class ProductFilter:
