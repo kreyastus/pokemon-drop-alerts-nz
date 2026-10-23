@@ -10,7 +10,7 @@ import time
 
 import requests
 
-from ..filters import looks_english
+from ..filters import language
 from ..release import format_release
 from ..models import Event, EVENT_LABELS, PREORDER, NEW_LISTING, RESTOCK, PRICE_DROP
 
@@ -85,12 +85,16 @@ class DiscordNotifier:
           "store_roles": {"jbhifi": "2345..."},               # optional per store
           "events": ["preorder", "new", "restock", "price_drop"],
           "english_webhook": "https://...",                   # optional: English prints only
+          "japanese_webhook": "https://...",                  # optional: Japanese prints only
+          "chinese_webhook": "https://...",                   # optional: Chinese prints only
           "username": "PokéDrop NZ"
         }
         """
         self.default = config.get("webhook")
         self.by_type = config.get("webhooks") or {}
-        self.english = config.get("english_webhook")
+        # Optional channels that get a copy of every alert in one language.
+        self.by_language = {lang: config.get(f"{lang}_webhook") for lang in ("english", "japanese", "chinese")}
+        self.by_language = {k: v for k, v in self.by_language.items() if v}
         self.roles = config.get("roles") or {}
         self.store_roles = config.get("store_roles") or {}
         self.enabled_events = set(config.get("events") or [PREORDER, NEW_LISTING, RESTOCK, PRICE_DROP])
@@ -119,17 +123,18 @@ class DiscordNotifier:
             url = self.by_type.get(e.type) or self.default
             if url:
                 groups.setdefault((url, e.type), []).append(e)
-            # A copy goes to the English-only channel, without role pings, so
+            # A copy goes to that language's channel, without role pings, so
             # people who follow both aren't pinged twice.
-            if self.english and looks_english(e.product):
-                groups.setdefault((self.english, e.type), []).append(e)
+            lang_url = self.by_language.get(language(e.product))
+            if lang_url and lang_url != url:
+                groups.setdefault((lang_url, e.type), []).append(e)
 
         for (url, etype), evs in groups.items():
             for i in range(0, len(evs), 10):
                 chunk = evs[i : i + 10]
                 role_ids = {self.roles[etype]} if self.roles.get(etype) else set()
                 role_ids |= {self.store_roles[e.product.store_id] for e in chunk if e.product.store_id in self.store_roles}
-                if url == self.english:
+                if url in self.by_language.values():
                     role_ids = set()
                 mentions = " ".join(f"<@&{r}>" for r in sorted(role_ids))
                 payload = {
