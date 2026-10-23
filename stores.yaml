@@ -37,6 +37,8 @@ discord:
     restock: ${DISCORD_ROLE_RESTOCK}
   events: [preorder, new, restock, price_drop]
   english_webhook: ${DISCORD_ENGLISH_WEBHOOK}  # optional: a copy of every English-print alert, without pings
+  japanese_webhook: ${DISCORD_JAPANESE_WEBHOOK} # optional: the same for Japanese prints
+  chinese_webhook: ${DISCORD_CHINESE_WEBHOOK}   # optional: the same for Chinese prints
   username: PokéDrop NZ
 
 wordpress:
