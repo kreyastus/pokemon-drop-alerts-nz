@@ -30,6 +30,9 @@ DEFAULT_EXCLUDE = [
     "jigsaw", "bag charm", "keychain", "night light", "torch", "bubble",
     "water bottle", "action figure", "blaster", "kendama", "yo-yo", "plush toy",
     "key ring", "key rings", "keyrings", "key chains", "keychains",
+    # art and stationery
+    "crayola", "crayons", "color", "colour", "sticker kit", "art kit", "activity kit",
+    "stationery", "notebook", "markers",
 ]
 
 # Always removed, even when the title also has card words: graded cards
