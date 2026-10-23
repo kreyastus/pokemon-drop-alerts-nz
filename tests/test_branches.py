@@ -123,6 +123,7 @@ def test_key_rings_and_graded_cards_removed():
         return f.matches(Product("s", "1", title, "https://x/1", 20.0, True))
     assert not ok("Pokemon Key Rings")
     assert not ok("Pokemon Pikachu Key Ring")
+    assert not ok("Pokemon Color and Sticker Kit Crayola")
     assert not ok("2023 POKEMON MEW EN-151 #199 CHARIZARD ex SPECIAL ILLUSTRATION RARE - PSA 10")
     assert not ok("2025 Pokemon Japanese M2A-Mega Dream Ex #226 Mega Gardevoir Ex Mega Attack Rare PSA 10")
     assert not ok("Pokemon TCG Umbreon VMAX CGC 9.5")
