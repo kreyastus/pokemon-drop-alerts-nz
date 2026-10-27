@@ -74,3 +74,14 @@ def test_language_channels(monkeypatch):
     got = {u: (k, c) for u, k, c in sent}
     assert got["MAIN"] == (4, "<@&9>")
     assert got["EN"] == (1, None) and got["JP"] == (1, None) and got["CN"] == (1, None)
+
+
+def test_price_drops_own_channel_not_language_channels(monkeypatch):
+    sent = []
+    monkeypatch.setattr(d.DiscordNotifier, "_post", lambda self, url, payload: sent.append((url, len(payload["embeds"]))))
+    monkeypatch.setattr(d.time, "sleep", lambda s: None)
+    n = d.DiscordNotifier({"webhook": "MAIN", "webhooks": {"price_drop": "DROPS"}, "english_webhook": "EN",
+                           "language_events": ["preorder", "new", "restock"]})
+    n.send([Event("price_drop", prod("Pokemon TCG Booster Box"), "Shop", 99.0, "t"),
+            Event("restock", prod("Pokemon TCG Elite Trainer Box"), "Shop", None, "t")])
+    assert sorted(sent) == [("DROPS", 1), ("EN", 1), ("MAIN", 1)]
