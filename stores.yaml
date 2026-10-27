@@ -32,6 +32,7 @@ discord:
   health_webhook: ${DISCORD_HEALTH_WEBHOOK} # optional: tells you when a shop stops scanning
   webhooks:                               # optional: send some alert types to their own channel
     preorder: ${DISCORD_PREORDER_WEBHOOK}
+    price_drop: ${DISCORD_PRICE_DROP_WEBHOOK}   # price drops go here instead of the main channel
   roles:                                  # optional: role IDs to ping (Server Settings > Roles > Copy ID)
     preorder: ${DISCORD_ROLE_PREORDER}
     restock: ${DISCORD_ROLE_RESTOCK}
@@ -39,6 +40,7 @@ discord:
   english_webhook: ${DISCORD_ENGLISH_WEBHOOK}  # optional: a copy of every English-print alert, without pings
   japanese_webhook: ${DISCORD_JAPANESE_WEBHOOK} # optional: the same for Japanese prints
   chinese_webhook: ${DISCORD_CHINESE_WEBHOOK}   # optional: the same for Chinese prints
+  language_events: [preorder, new, restock]     # the language channels skip price drops
   username: PokéDrop NZ
 
 wordpress:
