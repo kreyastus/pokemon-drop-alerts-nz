@@ -39,6 +39,19 @@ DEFAULT_EXCLUDE = [
 # ("Charizard ex Special Illustration Rare - PSA 10") are one-off collectables,
 # not stock drops.
 DEFAULT_DROP = ["psa", "cgc", "bgs", "beckett", "graded", "slab", "slabbed"]
+# Single cards are always removed too: a grade written without a space ("PSA10",
+# "CGC 9.5") or a card number ("Kyurem ex 157/086 (Black Bolt)").
+_GRADE_RE = re.compile(r"\b(?:psa|cgc|bgs|tag|beckett)\s*-?\s*\d{1,2}(?:\.5)?\b")
+_CARD_NO_RE = re.compile(r"(?<![\d/])(\d{1,3})\s*/\s*(\d{2,3})(?![\d/])")
+
+
+def looks_like_single(title: str) -> bool:
+    """A graded card or a single card with its number. A date such as
+    "25/10" in a pre-order title isn't a card number, so it doesn't count."""
+    t = _fold(title)
+    if _GRADE_RE.search(t):
+        return True
+    return any(not (int(a) <= 31 and int(b) <= 12) for a, b in _CARD_NO_RE.findall(t))
 
 # Words that mean "this is a card product", which beat the exclude list:
 # "30th Celebration Figure Collection" is a TCG box, not a figure.
@@ -128,7 +141,7 @@ class ProductFilter:
         if not assume_pokemon and not any(k in haystack for k in self.include):
             return False
         title = _fold(p.title)
-        if any(re.search(rf"\b{re.escape(k)}\b", title) for k in self.drop):
+        if any(re.search(rf"\b{re.escape(k)}\b", title) for k in self.drop) or looks_like_single(title):
             return False
         is_cards = any(re.search(rf"\b{re.escape(k)}\b", title) for k in TCG_WORDS)
         if not is_cards and any(re.search(rf"\b{re.escape(k)}\b", title) for k in self.exclude):
