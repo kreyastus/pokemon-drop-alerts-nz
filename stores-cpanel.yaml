@@ -22,9 +22,12 @@ settings:
 discord:
   webhook: ${DISCORD_WEBHOOK}
   health_webhook: ${DISCORD_HEALTH_WEBHOOK}
+  webhooks:
+    price_drop: ${DISCORD_PRICE_DROP_WEBHOOK}   # price drops go here instead of the main channel
   english_webhook: ${DISCORD_ENGLISH_WEBHOOK}   # optional: English prints only
   japanese_webhook: ${DISCORD_JAPANESE_WEBHOOK} # optional: Japanese prints only
   chinese_webhook: ${DISCORD_CHINESE_WEBHOOK}   # optional: Chinese prints only
+  language_events: [preorder, new, restock]     # the language channels skip price drops
   roles:
     preorder: ${DISCORD_ROLE_PREORDER}
     restock: ${DISCORD_ROLE_RESTOCK}
