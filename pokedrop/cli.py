@@ -21,7 +21,7 @@ from . import release
 from .detect import detect
 from .filters import ProductFilter, RRPTable, clean_title, purchase_limit
 from .http import PoliteClient
-from .models import Event, Product, PREORDER
+from .models import Event, Product, PREORDER, PRICE_DROP
 from .notify import DiscordNotifier, WordPressNotifier
 from .state import State, now_iso
 
@@ -330,6 +330,11 @@ def cmd_test_discord(args):
         sample.limit = 2
         sample.rrp = price
         events.append(Event(PREORDER, sample, "PokéDrop test", None, now_iso()))
+    # And a price drop, which goes to the price drop channel (if set) and not
+    # to the language channels.
+    drop = Product(store_id="test", product_id="4", title="Test alert: Pokémon TCG Booster Bundle",
+                   url="https://example.com/4", price=45.00, available=True)
+    events.append(Event(PRICE_DROP, drop, "PokéDrop test", 59.99, now_iso()))
     DiscordNotifier(cfg.get("discord") or {}).send(events)
     print("Sent. Check your Discord channels.")
 
