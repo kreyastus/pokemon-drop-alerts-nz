@@ -87,6 +87,7 @@ class DiscordNotifier:
           "english_webhook": "https://...",                   # optional: English prints only
           "japanese_webhook": "https://...",                  # optional: Japanese prints only
           "chinese_webhook": "https://...",                   # optional: Chinese prints only
+          "language_events": ["preorder", "new", "restock"],  # which alerts the language channels get
           "username": "PokéDrop NZ"
         }
         """
@@ -95,6 +96,7 @@ class DiscordNotifier:
         # Optional channels that get a copy of every alert in one language.
         self.by_language = {lang: config.get(f"{lang}_webhook") for lang in ("english", "japanese", "chinese")}
         self.by_language = {k: v for k, v in self.by_language.items() if v}
+        self.language_events = set(config.get("language_events") or [PREORDER, NEW_LISTING, RESTOCK])
         self.roles = config.get("roles") or {}
         self.store_roles = config.get("store_roles") or {}
         self.enabled_events = set(config.get("events") or [PREORDER, NEW_LISTING, RESTOCK, PRICE_DROP])
@@ -125,7 +127,7 @@ class DiscordNotifier:
                 groups.setdefault((url, e.type), []).append(e)
             # A copy goes to that language's channel, without role pings, so
             # people who follow both aren't pinged twice.
-            lang_url = self.by_language.get(language(e.product))
+            lang_url = self.by_language.get(language(e.product)) if e.type in self.language_events else None
             if lang_url and lang_url != url:
                 groups.setdefault((lang_url, e.type), []).append(e)
 
