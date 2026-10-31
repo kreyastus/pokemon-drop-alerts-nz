@@ -14,6 +14,17 @@ log = logging.getLogger(__name__)
 PAGE_SIZE = 250
 
 
+def _local_market(store: dict) -> tuple[str, dict]:
+    """Shops using Shopify Markets show prices in the visitor's own currency,
+    worked out from where the request comes from. GitHub's servers are in the
+    US or Canada, so a NZ$300 box came back as US$173 or CA$257. Asking for the
+    New Zealand market (or the shop's own, via `currency` and `country` in
+    stores.yaml) keeps every price in NZ dollars."""
+    currency = store.get("currency", "NZD")
+    country = store.get("country", "NZ")
+    return f"&currency={currency}", {"Cookie": f"localization={country}; cart_currency={currency}"}
+
+
 def _to_float(v):
     try:
         return float(v) if v not in (None, "") else None
@@ -57,12 +68,13 @@ def fetch(store: dict, client: PoliteClient) -> list[Product]:
     collections = store.get("collections") or [None]
     preorder_collections = set(store.get("preorder_collections") or [])
     max_pages = int(store.get("max_pages", 10))
+    market, headers = _local_market(store)
     seen: dict[str, Product] = {}
     for handle in collections:
         path = f"/collections/{handle}/products.json" if handle else "/products.json"
         for page in range(1, max_pages + 1):
-            url = f"{base}{path}?limit={PAGE_SIZE}&page={page}"
-            payload = client.get_json(url)
+            url = f"{base}{path}?limit={PAGE_SIZE}&page={page}{market}"
+            payload = client.get_json(url, headers=headers)
             batch = parse_products(store, payload)
             for prod in batch:
                 if handle in preorder_collections:
