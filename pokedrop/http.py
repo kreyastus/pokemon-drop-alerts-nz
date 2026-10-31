@@ -110,7 +110,8 @@ class PoliteClient:
         return self._request("POST", url, data=data, headers=headers or {})
 
     def get_json(self, url: str, **kwargs):
-        r = self.get(url, headers={"Accept": "application/json"}, **kwargs)
+        headers = {"Accept": "application/json", **(kwargs.pop("headers", None) or {})}
+        r = self.get(url, headers=headers, **kwargs)
         r.raise_for_status()
         return r.json()
 
