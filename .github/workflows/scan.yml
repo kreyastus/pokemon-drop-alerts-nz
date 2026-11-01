@@ -24,7 +24,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
+      # The newest main, not the commit that was current when this run was queued:
+      # a run that waits behind another would otherwise start from an old scan state.
       - uses: actions/checkout@v5
+        with:
+          ref: main
 
       - uses: actions/setup-python@v6
         with:
@@ -70,6 +74,13 @@ jobs:
           git config user.name "pokedrop-bot"
           git config user.email "pokedrop-bot@users.noreply.github.com"
           git add data/state.json
-          git diff --cached --quiet || git commit -m "Update scan state [skip ci]"
-          git pull --rebase --autostash || true
-          git push
+          git diff --cached --quiet && exit 0
+          git commit -q -m "Update scan state [skip ci]"
+          # If another run saved the state while this one was scanning, this run's copy
+          # is the newer one, so it wins (-X theirs keeps the commit being replayed).
+          for attempt in 1 2 3; do
+            git push -q origin HEAD:main && exit 0
+            git fetch -q origin main
+            git rebase -q -X theirs origin/main
+          done
+          exit 1
