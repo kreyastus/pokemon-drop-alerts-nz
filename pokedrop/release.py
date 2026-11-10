@@ -140,7 +140,7 @@ _SERIES = re.compile(
     re.I,
 )
 _TYPES = re.compile(
-    r"\s*[\-–—:,|]?\s*\b(elite trainer box|etb|booster bundle|booster box|booster display|booster packs?|"
+    r"\s*[\-–—:,|]?\s*\b((?:three|\d)\s*x?\s*-?\s*(?:booster\s+)?packs?\s+blister|elite trainer box|etb|booster bundle|booster box|booster display|booster packs?|"
     r"sleeved booster|(?:three|\d)\s*-?\s*booster(?: blister)?|blisters?|checklane|"
     r"super-premium collection|ultra-premium collection|premium collection|special collection|collection box|"
     r"collection bundle|poster (?:collection|box)|(?:deluxe )?pin collection|illustration collection|figure collection|"
