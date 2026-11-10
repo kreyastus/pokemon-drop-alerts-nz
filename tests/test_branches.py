@@ -135,3 +135,18 @@ def test_key_rings_and_graded_cards_removed():
     assert not ok("Pokemon TCG Umbreon VMAX CGC 9.5")
     assert ok("Pokemon TCG Ascended Heroes Elite Trainer Box")
     assert ok("Pokemon TCG Poke Ball Tin")
+
+
+def test_three_pack_blisters_and_portfolios():
+    import yaml
+    from pokedrop.filters import RRPTable
+    from pokedrop.release import product_line
+
+    r = yaml.safe_load(open("rrp.yaml"))
+    rrp = RRPTable(r["rules"], r["exclude"])
+    assert rrp.lookup("Pokemon TCG - Delta Reign 3 Pack Blister") == rrp.lookup("Pokémon TCG Delta Reign Three booster blister")
+    assert product_line("Pokemon TCG - Delta Reign 3 Pack Blister") == "Delta Reign"
+    # A plain 9-pocket portfolio is priced as one, not as a binder collection; PRO Binders get no RRP.
+    assert rrp.lookup("Pokémon TCG 30th Anniversary 9-Pocket Portfolio Binder") == 29.99
+    assert rrp.lookup("ULTRA PRO Pokémon - Portfolio - 9PKT- Zippered PRO Binder- Elite Series") is None
+    assert rrp.lookup("Black Bolt Binder Collection") is None
