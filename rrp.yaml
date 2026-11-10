@@ -12,18 +12,22 @@
 flag_over_percent: 15     # flag a listing priced this much (or more) above RRP
 
 # Skipped entirely: imports and multi-box cases are priced differently.
-exclude: [japanese, chinese, korean, " case", "(case", "graded", "psa "]
+exclude: [japanese, chinese, korean, " case", "(case", "graded", "psa ", "pro binder", "pro-binder", "zippered"]
 
 rules:
   - match: ["league battle deck"]
     rrp: 72.00
   - match: ["mini portfolio"]
     rrp: 14.00
-  - match: ["9-pocket portfolio", "9 pocket portfolio", "9pkt portfolio", "portfolio"]
-    rrp: 34.99
+  # Plain Ultra Pro portfolios (binders), not binder collections or PRO Binders.
+  - match: ["4-pocket portfolio", "4 pocket portfolio", "portfolio 4pkt", "4pkt portfolio", "4-pocket"]
+    rrp: 19.99
+  - match: ["9-pocket portfolio", "9 pocket portfolio", "9pkt portfolio", "portfolio 9pkt", "portfolio"]
+    rrp: 29.99
   - match: ["mini tin"]
     rrp: 24.99
-  - match: ["3-booster blister", "3 booster blister", "three booster blister"]
+  - match: ["3-booster blister", "3 booster blister", "three booster blister", "three-booster blister",
+            "3-pack blister", "3 pack blister", "three pack blister", "3x booster pack blister"]
     rrp: 31.99
   - match: ["blister"]
     rrp: 10.99
